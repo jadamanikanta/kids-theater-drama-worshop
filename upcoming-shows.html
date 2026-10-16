@@ -929,28 +929,42 @@
     </footer>
 
     <script src="https://unpkg.com/lucide@latest"></script>
-    <script>
-        
+   <script>
 document.addEventListener("DOMContentLoaded", () => {
     const body = document.body;
     const html = document.documentElement;
+
     const themeToggle = document.getElementById("themeToggle");
     const directionToggle = document.getElementById("directionToggle");
     const menuToggle = document.getElementById("menuToggle");
     const mainNav = document.getElementById("mainNav");
+
     const homeDropdown = document.querySelector(".nav-dropdown");
     const homeDropdownToggle = document.querySelector(".nav-dropdown-toggle");
 
-    const currentPage = window.location.pathname.split("/").pop().toLowerCase();
+    const currentPage = window.location.pathname
+        .split("/")
+        .pop()
+        .toLowerCase();
 
     const savedTheme = localStorage.getItem("stagesprouts-theme");
-    const savedDirection = localStorage.getItem("stagesprouts-direction") || "ltr";
+    const savedDirection =
+        localStorage.getItem("stagesprouts-direction") || "ltr";
 
     if (savedTheme === "dark") {
         body.classList.add("dark-mode");
+    } else {
+        body.classList.remove("dark-mode");
     }
 
     html.setAttribute("dir", savedDirection);
+
+    if (directionToggle) {
+        directionToggle.setAttribute(
+            "aria-label",
+            `Current direction: ${savedDirection.toUpperCase()}`
+        );
+    }
 
     function renderIcons() {
         if (window.lucide) {
@@ -962,27 +976,49 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!themeToggle) return;
 
         const isDark = body.classList.contains("dark-mode");
-        themeToggle.innerHTML = `<i data-lucide="${isDark ? "sun" : "moon"}"></i>`;
-        themeToggle.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
-        themeToggle.setAttribute("title", isDark ? "Switch to Light Mode" : "Switch to Dark Mode");
+
+        themeToggle.innerHTML = `
+            <i data-lucide="${isDark ? "sun" : "moon"}"></i>
+        `;
+
+        themeToggle.setAttribute(
+            "aria-label",
+            isDark ? "Switch to light mode" : "Switch to dark mode"
+        );
+
+        themeToggle.setAttribute(
+            "title",
+            isDark ? "Switch to Light Mode" : "Switch to Dark Mode"
+        );
+
         renderIcons();
     }
 
     function updateMenuIcon(isOpen) {
         if (!menuToggle) return;
 
-        menuToggle.innerHTML = `<i data-lucide="${isOpen ? "x" : "menu"}"></i>`;
+        menuToggle.innerHTML = `
+            <i data-lucide="${isOpen ? "x" : "menu"}"></i>
+        `;
+
         menuToggle.setAttribute("aria-expanded", String(isOpen));
-        menuToggle.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
+
+        menuToggle.setAttribute(
+            "aria-label",
+            isOpen ? "Close navigation" : "Open navigation"
+        );
+
         renderIcons();
     }
 
     function closeMobileMenu() {
-        if (!mainNav || !menuToggle) return;
+        if (mainNav) {
+            mainNav.classList.remove("open");
+        }
 
-        mainNav.classList.remove("open");
         homeDropdown?.classList.remove("open");
         homeDropdownToggle?.setAttribute("aria-expanded", "false");
+
         updateMenuIcon(false);
     }
 
@@ -990,9 +1026,13 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll(".nav-link, .dropdown-link").forEach(link => {
             link.classList.remove("active");
 
-            const href = link.getAttribute("href").split("/").pop().toLowerCase();
+            const href = link.getAttribute("href");
 
-            if (href === currentPage) {
+            if (!href) return;
+
+            const linkPage = href.split("/").pop().toLowerCase();
+
+            if (linkPage === currentPage) {
                 link.classList.add("active");
 
                 if (link.classList.contains("dropdown-link")) {
@@ -1008,40 +1048,71 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    themeToggle?.addEventListener("click", () => {
+    themeToggle?.addEventListener("click", event => {
+        event.preventDefault();
+
         body.classList.toggle("dark-mode");
 
-        const theme = body.classList.contains("dark-mode") ? "dark" : "light";
+        const theme = body.classList.contains("dark-mode")
+            ? "dark"
+            : "light";
+
         localStorage.setItem("stagesprouts-theme", theme);
+
         updateThemeIcon();
     });
 
-    directionToggle?.addEventListener("click", () => {
+    directionToggle?.addEventListener("click", event => {
+        event.preventDefault();
+
         const currentDirection = html.getAttribute("dir") || "ltr";
         const newDirection = currentDirection === "ltr" ? "rtl" : "ltr";
 
         html.setAttribute("dir", newDirection);
+
         localStorage.setItem("stagesprouts-direction", newDirection);
-        directionToggle.setAttribute("aria-label", `Current direction: ${newDirection.toUpperCase()}`);
+
+        directionToggle.setAttribute(
+            "aria-label",
+            `Current direction: ${newDirection.toUpperCase()}`
+        );
     });
 
-    menuToggle?.addEventListener("click", () => {
-        if (!mainNav) return;
+    menuToggle?.addEventListener("click", event => {
+        event.preventDefault();
+        event.stopPropagation();
 
-        const isOpen = mainNav.classList.toggle("open");
+        if (!mainNav) {
+            console.error("Navigation element #mainNav was not found.");
+            return;
+        }
+
+        const isOpen = !mainNav.classList.contains("open");
+
+        mainNav.classList.toggle("open", isOpen);
+
         updateMenuIcon(isOpen);
     });
 
     homeDropdownToggle?.addEventListener("click", event => {
         if (window.innerWidth <= 768) {
             event.preventDefault();
+            event.stopPropagation();
 
-            const isOpen = homeDropdown?.classList.toggle("open") ?? false;
-            homeDropdownToggle.setAttribute("aria-expanded", String(isOpen));
+            const isOpen = !homeDropdown?.classList.contains("open");
+
+            homeDropdown?.classList.toggle("open", isOpen);
+
+            homeDropdownToggle.setAttribute(
+                "aria-expanded",
+                String(isOpen)
+            );
         }
     });
 
-    document.querySelectorAll(".nav-link, .dropdown-link, .nav-enquiry-mobile").forEach(link => {
+    document.querySelectorAll(
+        ".nav-link, .dropdown-link, .nav-enquiry-mobile"
+    ).forEach(link => {
         link.addEventListener("click", () => {
             if (window.innerWidth <= 768) {
                 closeMobileMenu();
@@ -1077,7 +1148,6 @@ document.addEventListener("DOMContentLoaded", () => {
     updateMenuIcon(false);
     renderIcons();
 });
-
-    </script>
+</script>
 </body>
 </html>
