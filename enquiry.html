@@ -1,0 +1,282 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#FFFFFF">
+    <title>Login | StageSprouts</title>
+    <meta name="description" content="Sign in to your StageSprouts parent account.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="login.css">
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+    <main class="login-page">
+        <div class="background-effects" aria-hidden="true">
+            <div class="ambient-glow glow-one"></div>
+            <div class="ambient-glow glow-two"></div>
+            <div class="stage-light stage-light-left"></div>
+            <div class="stage-light stage-light-right"></div>
+            <div class="stage-curtain stage-curtain-left"></div>
+            <div class="stage-curtain stage-curtain-right"></div>
+            <div class="orbit"></div>
+
+            <div class="theater-mask mask-left">
+                <i data-lucide="drama"></i>
+            </div>
+
+            <div class="theater-mask mask-right">
+                <i data-lucide="sparkles"></i>
+            </div>
+
+            <div class="stage-performer">
+                <i data-lucide="clapperboard"></i>
+            </div>
+
+            <div class="floating-star star-one">
+                <i data-lucide="star"></i>
+            </div>
+
+            <div class="floating-star star-two">
+                <i data-lucide="sparkle"></i>
+            </div>
+
+            <div class="floating-star star-three">
+                <i data-lucide="star"></i>
+            </div>
+
+            <div class="stage-floor"></div>
+        </div>
+
+        <div class="utility-controls">
+            <button class="header-icon-btn" id="directionToggle" type="button" aria-label="Toggle RTL and LTR" title="Toggle RTL / LTR">
+                <i data-lucide="arrow-left-right"></i>
+            </button>
+
+            <button class="header-icon-btn" id="themeToggle" type="button" aria-label="Toggle light and dark mode" title="Toggle Light / Dark Mode">
+                <i data-lucide="moon"></i>
+            </button>
+        </div>
+
+        <section class="login-card" aria-labelledby="loginHeading">
+            <div class="brand-area">
+                <a href="index.html" class="meatcraft-logo" aria-label="StageSprouts Home">
+                    <div class="logo-badge">
+                        <img src="logo.png" alt="StageSprouts Theater Logo" class="brand-logo-img">
+                    </div>
+
+                    <div class="logo-text-group">
+                        <span class="logo-brand-title">Stage<span class="brand-craft">Sprouts</span></span>
+                        <span class="logo-brand-subtitle">KIDS THEATER &amp; DRAMA WORKSHOP</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="welcome-label">
+                <i data-lucide="sparkles"></i>
+                <span>WELCOME BACK</span>
+            </div>
+
+            <h1 class="login-heading" id="loginHeading">Your Next Act Awaits</h1>
+
+            <p class="login-description">
+                Sign in to your parent account and discover your child's creative journey.
+            </p>
+
+            <form class="login-form" id="loginForm">
+                <div class="form-field">
+                    <label class="form-label" for="email">Email Address</label>
+
+                    <div class="input-wrap">
+                        <span class="input-icon">
+                            <i data-lucide="mail"></i>
+                        </span>
+
+                        <input
+                            class="form-input"
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="parent@example.com"
+                            autocomplete="email"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <div class="form-field">
+                    <label class="form-label" for="password">Password</label>
+
+                    <div class="input-wrap">
+                        <span class="input-icon">
+                            <i data-lucide="lock-keyhole"></i>
+                        </span>
+
+                        <input
+                            class="form-input"
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                            required
+                        >
+
+                        <button class="password-toggle" id="passwordToggle" type="button" aria-label="Show password" title="Show password">
+                            <i data-lucide="eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-options">
+                    <label class="remember-option" for="remember">
+                        <input type="checkbox" id="remember" name="remember">
+                        <span>Remember me</span>
+                    </label>
+
+                    <a class="forgot-link" href="forgot-password.html">Forgot Password?</a>
+                </div>
+
+                <div class="form-message" id="formMessage" role="status" aria-live="polite"></div>
+
+                <button class="login-submit" type="submit">
+                    <span>Sign In to Your Account</span>
+                    <i data-lucide="arrow-right"></i>
+                </button>
+            </form>
+
+            <div class="divider">OR CONTINUE WITH</div>
+
+           
+<div class="social-buttons">
+    <button class="social-button" id="googleLogin" type="button">
+        <i class="fa-brands fa-google google-icon" aria-hidden="true"></i>
+        <span>Google</span>
+    </button>
+
+    <button class="social-button" id="appleLogin" type="button">
+        <i class="fa-brands fa-apple apple-icon" aria-hidden="true"></i>
+        <span>Apple</span>
+    </button>
+</div>
+
+
+            <p class="signup-prompt">
+                New to the spotlight?
+                <a class="signup-link" href="signup.html">Create an Account</a>
+            </p>
+
+            
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const body = document.body;
+            const html = document.documentElement;
+            const themeToggle = document.getElementById("themeToggle");
+            const directionToggle = document.getElementById("directionToggle");
+            const passwordToggle = document.getElementById("passwordToggle");
+            const passwordInput = document.getElementById("password");
+            const loginForm = document.getElementById("loginForm");
+            const formMessage = document.getElementById("formMessage");
+
+            const savedTheme = localStorage.getItem("stagesprouts-theme");
+            const savedDirection = localStorage.getItem("stagesprouts-direction") || "ltr";
+
+            if (savedTheme === "dark") {
+                body.classList.add("dark-mode");
+            }
+
+            html.setAttribute("dir", savedDirection);
+
+            function renderIcons() {
+                if (window.lucide) {
+                    window.lucide.createIcons();
+                }
+            }
+
+            function updateThemeIcon() {
+                const isDark = body.classList.contains("dark-mode");
+
+                themeToggle.innerHTML = `<i data-lucide="${isDark ? "sun" : "moon"}"></i>`;
+                themeToggle.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
+                themeToggle.setAttribute("title", isDark ? "Switch to Light Mode" : "Switch to Dark Mode");
+
+                renderIcons();
+            }
+
+            function updateDirectionControl() {
+                const direction = html.getAttribute("dir") || "ltr";
+
+                directionToggle.setAttribute("aria-label", `Current direction: ${direction.toUpperCase()}`);
+                directionToggle.setAttribute("title", `Current direction: ${direction.toUpperCase()} — click to switch`);
+            }
+
+            themeToggle.addEventListener("click", () => {
+                body.classList.toggle("dark-mode");
+
+                const theme = body.classList.contains("dark-mode") ? "dark" : "light";
+
+                localStorage.setItem("stagesprouts-theme", theme);
+                updateThemeIcon();
+            });
+
+            directionToggle.addEventListener("click", () => {
+                const currentDirection = html.getAttribute("dir") || "ltr";
+                const newDirection = currentDirection === "ltr" ? "rtl" : "ltr";
+
+                html.setAttribute("dir", newDirection);
+                localStorage.setItem("stagesprouts-direction", newDirection);
+                updateDirectionControl();
+            });
+
+            passwordToggle.addEventListener("click", () => {
+                const isPassword = passwordInput.type === "password";
+
+                passwordInput.type = isPassword ? "text" : "password";
+                passwordToggle.innerHTML = `<i data-lucide="${isPassword ? "eye-off" : "eye"}"></i>`;
+                passwordToggle.setAttribute("aria-label", isPassword ? "Hide password" : "Show password");
+                passwordToggle.setAttribute("title", isPassword ? "Hide password" : "Show password");
+
+                renderIcons();
+            });
+
+            function showMessage(message) {
+                formMessage.textContent = message;
+                formMessage.classList.add("visible");
+            }
+
+            loginForm.addEventListener("submit", event => {
+                event.preventDefault();
+
+                if (!loginForm.reportValidity()) {
+                    return;
+                }
+
+                showMessage("The login form is ready to connect to your authentication service.");
+            });
+
+            document.getElementById("googleLogin").addEventListener("click", () => {
+                showMessage("Connect Google OAuth to enable Google sign-in.");
+            });
+
+            document.getElementById("appleLogin").addEventListener("click", () => {
+                showMessage("Connect Apple Sign In to enable Apple sign-in.");
+            });
+
+            renderIcons();
+            updateThemeIcon();
+            updateDirectionControl();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,578 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parent Dashboard | StageSprouts</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+<div class="dashboard-layout">
+
+    <aside class="sidebar" id="sidebar">
+        <a href="index.html" class="brand">
+            <img src="logo.png" alt="StageSprouts Logo">
+            <span><strong>Stage<span class="brand-accent">Sprouts</span></strong><small>KIDS THEATER &amp; DRAMA WORKSHOP</small></span>
+        </a>
+
+        
+
+        <p class="nav-label">PARENT PORTAL</p>
+        <nav class="sidebar-nav">
+            <button class="nav-item active" data-section="overview"><i data-lucide="layout-dashboard"></i><span>Overview</span></button>
+            <button class="nav-item" data-section="workshops"><i data-lucide="drama"></i><span>Workshop Sessions</span><b>3</b></button>
+            <button class="nav-item" data-section="schedule"><i data-lucide="calendar-days"></i><span>Rehearsal Schedule</span></button>
+            <button class="nav-item" data-section="payments"><i data-lucide="wallet"></i><span>Payments</span></button>
+            <button class="nav-item" data-section="performances"><i data-lucide="images"></i><span>Performance Photos</span></button>
+            <button class="nav-item" data-section="messages"><i data-lucide="message-circle"></i><span>Messages</span><b>2</b></button>
+
+            <p class="nav-label nav-label-account">ACCOUNT</p>
+            <button class="nav-item" data-section="profile"><i data-lucide="user-round"></i><span>My Profile</span></button>
+            <button class="nav-item" data-section="settings"><i data-lucide="settings-2"></i><span>Settings</span></button>
+            
+        </nav>
+
+        <div class="sidebar-bottom">
+            
+            <button class="nav-item logout-item" id="sidebarLogout"><i data-lucide="log-out"></i><span>Log Out</span></button>
+        </div>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <main class="main-area">
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="icon-button menu-toggle" id="menuToggle" aria-label="Open menu"><i data-lucide="menu"></i></button>
+                <div><small class="eyebrow">STAGESPROUTS PARENT PORTAL</small><strong id="pageTitle">Dashboard Overview</strong></div>
+            </div>
+
+            <div class="topbar-actions">
+                <button class="icon-button" id="directionToggle" title="Toggle RTL/LTR" aria-label="Toggle text direction"><i data-lucide="arrow-left-right"></i></button>
+                <button class="icon-button" id="themeToggle" title="Toggle theme" aria-label="Toggle light and dark mode"><i data-lucide="moon"></i></button>
+
+                <div class="dropdown-wrap">
+                    <button class="icon-button notification-button" id="notificationToggle" aria-label="Notifications" aria-expanded="false"><i data-lucide="bell"></i><span class="notification-dot"></span></button>
+                    <div class="dropdown notification-dropdown" id="notificationDropdown">
+                        <h3>Notifications <span>2 new</span></h3>
+                        <div class="notification-row"><i data-lucide="calendar-check"></i><div><strong>Rehearsal reminder</strong><p>Saturday at 10:00 AM in Studio A.</p><small>Today</small></div></div>
+                        <div class="notification-row"><i data-lucide="images"></i><div><strong>New performance photos</strong><p>Showcase photos are now available.</p><small>Yesterday</small></div></div>
+                    </div>
+                </div>
+
+                <div class="dropdown-wrap">
+                    <button class="profile-trigger" id="profileToggle" aria-expanded="false">
+                        <span class="avatar">JD</span>
+                        <span class="profile-name"><strong>Jordan Davis</strong><small>Parent</small></span>
+                        <i data-lucide="chevron-down"></i>
+                    </button>
+                    <div class="dropdown profile-dropdown" id="profileDropdown">
+                        <div class="profile-dropdown-head"><span class="avatar">JD</span><div><strong>Jordan Davis</strong><small>jordan@example.com</small></div></div>
+                        <button data-profile-section="profile"><i data-lucide="user-round"></i> Account details</button>
+                        <button data-profile-section="settings"><i data-lucide="settings-2"></i> Account settings</button>
+                        <button data-profile-section="contact"><i data-lucide="circle-help"></i> Help &amp; support</button>
+                        <hr>
+                        <button class="logout-text" id="profileLogout"><i data-lucide="log-out"></i> Log out</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="content-area">
+
+            <section class="dashboard-section active-section" id="overview" data-title="Dashboard Overview">
+                <div class="welcome-row">
+                    <div><span class="eyebrow">YOUR FAMILY'S CREATIVE JOURNEY</span><h1>Welcome back, Jordan! <span class="gold-text">✦</span></h1><p>Here's what's happening in your young star's world.</p></div>
+                    <button class="btn btn-primary" data-section="workshops"><i data-lucide="plus"></i> Explore Workshops</button>
+                </div>
+
+                <div class="hero-banner">
+                    <div class="hero-copy">
+                        <span class="hero-pill"><i data-lucide="sparkles"></i> DREAM · CREATE · PERFORM</span>
+                        <h2>Every little star deserves a <em>big stage.</em></h2>
+                        <p>Discover creative opportunities, keep up with rehearsals, and celebrate every milestone along the way.</p>
+                        <button class="btn btn-gold" data-section="schedule">View Rehearsals <i data-lucide="arrow-up-right"></i></button>
+                    </div>
+                    <div class="hero-illustration" aria-hidden="true"><span class="hero-orbit"></span><i data-lucide="drama"></i><span class="hero-star star-a">✦</span><span class="hero-star star-b">✧</span><span class="hero-star star-c">✦</span><small>THE SHOW STARTS WITH YOU</small></div>
+                </div>
+
+                <div class="stats-grid">
+                    <article class="stat-card"><span class="stat-icon purple-icon"><i data-lucide="drama"></i></span><p>Enrolled Workshops</p><strong>03</strong><small><span class="success-text">2 active</span> · 1 upcoming</small></article>
+                    <article class="stat-card"><span class="stat-icon gold-icon"><i data-lucide="calendar-check"></i></span><p>Upcoming Rehearsals</p><strong>04</strong><small>Next: Saturday, 10 AM</small></article>
+                    <article class="stat-card"><span class="stat-icon green-icon"><i data-lucide="wallet"></i></span><p>Outstanding Balance</p><strong>₹1,200</strong><small>Due October 20, 2026</small></article>
+                    <article class="stat-card"><span class="stat-icon rose-icon"><i data-lucide="images"></i></span><p>Performance Photos</p><strong>24</strong><small>8 recently added</small></article>
+                </div>
+
+                <div class="overview-columns">
+                    <div class="panel">
+                        <div class="panel-heading"><div><span class="eyebrow">SAVE THE DATE</span><h3>Upcoming Rehearsals</h3></div><button class="text-link" data-section="schedule">Full schedule <i data-lucide="arrow-up-right"></i></button></div>
+                        <div class="event-list">
+                            <article class="event-row"><div class="date-box"><small>OCT</small><strong>17</strong></div><div class="event-info"><strong>Little Stars Acting</strong><span><i data-lucide="clock-3"></i> 10:00–11:30 AM</span><span><i data-lucide="map-pin"></i> Studio A</span></div><span class="status status-upcoming">Upcoming</span></article>
+                            <article class="event-row"><div class="date-box"><small>OCT</small><strong>19</strong></div><div class="event-info"><strong>Musical Theater Practice</strong><span><i data-lucide="clock-3"></i> 4:00–5:30 PM</span><span><i data-lucide="map-pin"></i> Main Stage</span></div><span class="status status-confirmed">Confirmed</span></article>
+                            <article class="event-row"><div class="date-box"><small>OCT</small><strong>22</strong></div><div class="event-info"><strong>Stage Movement</strong><span><i data-lucide="clock-3"></i> 3:30–4:30 PM</span><span><i data-lucide="map-pin"></i> Studio B</span></div><span class="status status-upcoming">Upcoming</span></article>
+                        </div>
+                    </div>
+
+                    <div class="panel child-panel">
+                        <div class="panel-heading"><div><span class="eyebrow">YOUR LITTLE PERFORMER</span><h3>Child Profile</h3></div><i data-lucide="more-horizontal"></i></div>
+                        <div class="child-heading"><div class="child-avatar">AD</div><div><h4>Alex Davis</h4><p>Age 8 · Junior Performer</p><span class="child-level">✦ Rising Star</span></div></div>
+                        <div class="detail-row"><span>Enrolled classes</span><strong>3 workshops</strong></div>
+                        <div class="detail-row"><span>Next performance</span><strong>Nov 14, 2026</strong></div>
+                        <div class="detail-row"><span>Instructor</span><strong>Ms. Olivia</strong></div>
+                        <button class="btn btn-outline full-width" data-section="profile">View Child Details <i data-lucide="arrow-up-right"></i></button>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-heading"><div><span class="eyebrow">LITTLE MOMENTS, BIG MEMORIES</span><h3>Recent Performance Photos</h3></div><button class="text-link" data-section="performances">View gallery <i data-lucide="arrow-up-right"></i></button></div>
+                    <div class="photo-strip">
+                        <button class="photo-card" data-gallery-photo="0"><img src="https://images.unsplash.com/photo-1503095396549-807759245b35?auto=format&fit=crop&w=600&q=80" alt="Theater stage"><span>Spring Showcase</span></button>
+                        <button class="photo-card" data-gallery-photo="1"><img src="https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?auto=format&fit=crop&w=600&q=80" alt="Stage performance"><span>Stage Moments</span></button>
+                        <button class="photo-card" data-gallery-photo="2"><img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=600&q=80" alt="Live event"><span>Rehearsal Day</span></button>
+                        <button class="photo-card" data-gallery-photo="3"><img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=600&q=80" alt="Show lights"><span>Showtime</span></button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="dashboard-section" id="workshops" data-title="Workshop Sessions">
+                <div class="page-heading"><div><span class="eyebrow">LEARN · EXPLORE · PERFORM</span><h1>Workshop Sessions</h1><p>Find the perfect creative space for your child's next adventure.</p></div><span class="soft-badge"><i data-lucide="users"></i> 3 enrolled</span></div>
+                <div class="filter-row"><label class="search-box"><i data-lucide="search"></i><input type="search" id="workshopSearch" placeholder="Search workshops..."></label><select id="workshopFilter"><option value="all">All workshops</option><option value="enrolled">Enrolled</option><option value="available">Available</option></select></div>
+                <div class="workshop-grid">
+                    <article class="workshop-card" data-name="Little Stars Acting" data-enrolled="true"><div class="workshop-art art-purple"><i data-lucide="drama"></i><span>AGES 6–9</span></div><div class="workshop-body"><small>ACTING &amp; EXPRESSION</small><h3>Little Stars Acting</h3><p>Build confidence, explore characters, and bring stories to life through acting games.</p><div class="course-meta"><span><i data-lucide="calendar"></i> Saturdays</span><span><i data-lucide="clock"></i> 10 AM</span></div><div class="course-price"><strong>₹2,400 <small>/ month</small></strong><span class="status status-confirmed">Enrolled</span></div><button class="btn btn-outline full-width" data-section="schedule">View Sessions</button></div></article>
+                    <article class="workshop-card" data-name="Musical Theater" data-enrolled="true"><div class="workshop-art art-gold"><i data-lucide="music-2"></i><span>AGES 7–12</span></div><div class="workshop-body"><small>MUSIC &amp; MOVEMENT</small><h3>Musical Theater</h3><p>Discover singing, dancing, and storytelling in a lively group setting.</p><div class="course-meta"><span><i data-lucide="calendar"></i> Mondays</span><span><i data-lucide="clock"></i> 4 PM</span></div><div class="course-price"><strong>₹2,800 <small>/ month</small></strong><span class="status status-confirmed">Enrolled</span></div><button class="btn btn-outline full-width" data-section="schedule">View Sessions</button></div></article>
+                    <article class="workshop-card" data-name="Stage Movement" data-enrolled="true"><div class="workshop-art art-teal"><i data-lucide="footprints"></i><span>AGES 6–12</span></div><div class="workshop-body"><small>MOVEMENT &amp; SKILLS</small><h3>Stage Movement</h3><p>Learn expressive movement, body awareness, and stage confidence.</p><div class="course-meta"><span><i data-lucide="calendar"></i> Thursdays</span><span><i data-lucide="clock"></i> 3:30 PM</span></div><div class="course-price"><strong>₹1,800 <small>/ month</small></strong><span class="status status-confirmed">Enrolled</span></div><button class="btn btn-outline full-width" data-section="schedule">View Sessions</button></div></article>
+                    <article class="workshop-card" data-name="Creative Storytelling" data-enrolled="false"><div class="workshop-art art-rose"><i data-lucide="book-open"></i><span>AGES 5–8</span></div><div class="workshop-body"><small>IMAGINATION &amp; STORY</small><h3>Creative Storytelling</h3><p>Turn big imaginations into magical stories through play and role-play.</p><div class="course-meta"><span><i data-lucide="calendar"></i> Wednesdays</span><span><i data-lucide="clock"></i> 4:30 PM</span></div><div class="course-price"><strong>₹1,600 <small>/ month</small></strong><span class="status status-available">Open spots</span></div><button class="btn btn-primary full-width enroll-button" data-course="Creative Storytelling">Enroll Child</button></div></article>
+                    <article class="workshop-card" data-name="Junior Improv Club" data-enrolled="false"><div class="workshop-art art-blue"><i data-lucide="party-popper"></i><span>AGES 8–12</span></div><div class="workshop-body"><small>IMPROVISATION</small><h3>Junior Improv Club</h3><p>Practice quick thinking, teamwork, and spontaneous comedy.</p><div class="course-meta"><span><i data-lucide="calendar"></i> Fridays</span><span><i data-lucide="clock"></i> 4 PM</span></div><div class="course-price"><strong>₹2,000 <small>/ month</small></strong><span class="status status-available">Open spots</span></div><button class="btn btn-primary full-width enroll-button" data-course="Junior Improv Club">Enroll Child</button></div></article>
+                    <article class="workshop-card" data-name="Stagecraft Basics" data-enrolled="false"><div class="workshop-art art-orange"><i data-lucide="lightbulb"></i><span>AGES 9–14</span></div><div class="workshop-body"><small>BEHIND THE SCENES</small><h3>Stagecraft Basics</h3><p>Explore props, costumes, set design, and teamwork behind every show.</p><div class="course-meta"><span><i data-lucide="calendar"></i> Sundays</span><span><i data-lucide="clock"></i> 11 AM</span></div><div class="course-price"><strong>₹2,200 <small>/ month</small></strong><span class="status status-available">Open spots</span></div><button class="btn btn-primary full-width enroll-button" data-course="Stagecraft Basics">Enroll Child</button></div></article>
+                </div>
+                <p id="workshopEmpty" class="empty-state" hidden>No workshops match your search.</p>
+            </section>
+
+            <section class="dashboard-section" id="schedule" data-title="Rehearsal Schedule">
+                <div class="page-heading"><div><span class="eyebrow">MARK YOUR CALENDAR</span><h1>Rehearsal Schedule</h1><p>Know where your young performer needs to be, and when.</p></div><span class="soft-badge"><i data-lucide="calendar"></i> October 2026</span></div>
+                <div class="stats-grid schedule-stats">
+                    <article class="stat-card"><span class="stat-icon purple-icon"><i data-lucide="calendar-days"></i></span><p>This month</p><strong>12 sessions</strong><small>Across 3 workshops</small></article>
+                    <article class="stat-card"><span class="stat-icon gold-icon"><i data-lucide="clock"></i></span><p>Next rehearsal</p><strong>Oct 17</strong><small>Saturday · 10 AM</small></article>
+                    <article class="stat-card"><span class="stat-icon green-icon"><i data-lucide="check-circle"></i></span><p>Attendance</p><strong>95%</strong><small>Great consistency!</small></article>
+                </div>
+                <div class="panel"><div class="panel-heading"><div><span class="eyebrow">YOUR CHILD'S CALENDAR</span><h3>Upcoming Sessions</h3></div><span class="muted-text">All times local</span></div><div class="table-wrap"><table><thead><tr><th>Date</th><th>Workshop</th><th>Time</th><th>Location</th><th>Instructor</th><th>Status</th></tr></thead><tbody>
+                    <tr><td>Oct 17, Sat</td><td>Little Stars Acting</td><td>10–11:30 AM</td><td>Studio A</td><td>Ms. Olivia</td><td><span class="status status-upcoming">Upcoming</span></td></tr>
+                    <tr><td>Oct 19, Mon</td><td>Musical Theater</td><td>4–5:30 PM</td><td>Main Stage</td><td>Mr. Ethan</td><td><span class="status status-confirmed">Confirmed</span></td></tr>
+                    <tr><td>Oct 22, Thu</td><td>Stage Movement</td><td>3:30–4:30 PM</td><td>Studio B</td><td>Ms. Olivia</td><td><span class="status status-upcoming">Upcoming</span></td></tr>
+                    <tr><td>Oct 24, Sat</td><td>Little Stars Acting</td><td>10–11:30 AM</td><td>Studio A</td><td>Ms. Olivia</td><td><span class="status status-upcoming">Upcoming</span></td></tr>
+                    <tr><td>Oct 26, Mon</td><td>Musical Theater</td><td>4–5:30 PM</td><td>Main Stage</td><td>Mr. Ethan</td><td><span class="status status-upcoming">Upcoming</span></td></tr>
+                    <tr><td>Oct 29, Thu</td><td>Stage Movement</td><td>3:30–4:30 PM</td><td>Studio B</td><td>Ms. Olivia</td><td><span class="status status-upcoming">Upcoming</span></td></tr>
+                </tbody></table></div></div>
+                <div class="notice-card"><i data-lucide="info"></i><div><strong>A friendly reminder</strong><p>Please arrive 10 minutes before each session. Bring a water bottle and comfortable clothing suitable for movement.</p></div></div>
+            </section>
+
+            <section class="dashboard-section" id="payments" data-title="Payments">
+                <div class="page-heading"><div><span class="eyebrow">SIMPLE &amp; TRANSPARENT</span><h1>Payments &amp; Billing</h1><p>Track workshop fees, receipts, and upcoming dues.</p></div><span class="soft-badge"><i data-lucide="shield-check"></i> Secure billing</span></div>
+                <div class="billing-grid">
+                    <article class="billing-card"><span>Total paid this year</span><strong>₹18,600</strong><small>Across all workshops</small></article>
+                    <article class="billing-card billing-due"><span>Outstanding balance</span><strong>₹1,200</strong><small>Due October 20, 2026</small></article>
+                    <article class="billing-card"><span>Next payment</span><strong>₹2,400</strong><small>November 1, 2026</small></article>
+                </div>
+                <div class="panel"><div class="panel-heading"><div><span class="eyebrow">PAYMENT HISTORY</span><h3>Recent Transactions</h3></div><select id="paymentFilter"><option value="all">All transactions</option><option value="paid">Paid</option><option value="pending">Pending</option></select></div><div class="table-wrap"><table><thead><tr><th>Transaction</th><th>Date</th><th>Amount</th><th>Method</th><th>Status</th><th>Receipt</th></tr></thead><tbody id="paymentRows">
+                    <tr data-payment-status="pending"><td><strong>October Workshop Fee</strong><small class="table-subtext">Little Stars Acting</small></td><td>Oct 1, 2026</td><td>₹1,200</td><td>Not paid</td><td><span class="status status-pending">Pending</span></td><td><button class="table-action pay-button">Pay now</button></td></tr>
+                    <tr data-payment-status="paid"><td><strong>September Workshop Fee</strong><small class="table-subtext">Monthly enrollment</small></td><td>Sep 1, 2026</td><td>₹2,400</td><td>UPI</td><td><span class="status status-confirmed">Paid</span></td><td><button class="table-action receipt-button" data-receipt="September Workshop Fee — ₹2,400 — Paid September 1, 2026">View receipt</button></td></tr>
+                    <tr data-payment-status="paid"><td><strong>Musical Theater</strong><small class="table-subtext">Monthly enrollment</small></td><td>Aug 2, 2026</td><td>₹2,800</td><td>Card</td><td><span class="status status-confirmed">Paid</span></td><td><button class="table-action receipt-button" data-receipt="Musical Theater — ₹2,800 — Paid August 2, 2026">View receipt</button></td></tr>
+                    <tr data-payment-status="paid"><td><strong>Stage Movement</strong><small class="table-subtext">Monthly enrollment</small></td><td>Aug 2, 2026</td><td>₹1,800</td><td>UPI</td><td><span class="status status-confirmed">Paid</span></td><td><button class="table-action receipt-button" data-receipt="Stage Movement — ₹1,800 — Paid August 2, 2026">View receipt</button></td></tr>
+                </tbody></table></div></div>
+                <div class="notice-card"><i data-lucide="info"></i><div><strong>Demo payment area</strong><p>Payment buttons display a preview only. Connect a payment provider before accepting real payments.</p></div></div>
+            </section>
+
+            <section class="dashboard-section" id="performances" data-title="Performance Photos">
+                <div class="page-heading"><div><span class="eyebrow">CAPTURE THE MAGIC</span><h1>Performance Photos</h1><p>Every bow, smile, and standing ovation deserves to be remembered.</p></div><span class="soft-badge"><i data-lucide="images"></i> 24 memories</span></div>
+                <div class="gallery-banner"><i data-lucide="heart"></i><div><strong>Little moments become lifelong memories.</strong><p>Browse photos from workshops, rehearsals, and special performances.</p></div><select id="galleryFilter"><option value="all">All albums</option><option value="showcase">Showcase</option><option value="rehearsal">Rehearsals</option><option value="workshop">Workshops</option></select></div>
+                <div class="gallery-grid">
+                    <button class="gallery-card" data-album="showcase" data-photo="https://images.unsplash.com/photo-1503095396549-807759245b35?auto=format&fit=crop&w=1200&q=85" data-caption="Spring Showcase"><img src="https://images.unsplash.com/photo-1503095396549-807759245b35?auto=format&fit=crop&w=600&q=80" alt="Spring showcase stage"><span><strong>Spring Showcase</strong><small>8 photos · September 2026</small></span><i data-lucide="expand"></i></button>
+                    <button class="gallery-card" data-album="rehearsal" data-photo="https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?auto=format&fit=crop&w=1200&q=85" data-caption="Rehearsal Moments"><img src="https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?auto=format&fit=crop&w=600&q=80" alt="Performer under stage lights"><span><strong>Rehearsal Moments</strong><small>6 photos · September 2026</small></span><i data-lucide="expand"></i></button>
+                    <button class="gallery-card" data-album="workshop" data-photo="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1200&q=85" data-caption="Creative Workshop"><img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=600&q=80" alt="Creative group event"><span><strong>Creative Workshop</strong><small>5 photos · August 2026</small></span><i data-lucide="expand"></i></button>
+                    <button class="gallery-card" data-album="showcase" data-photo="https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=1200&q=85" data-caption="Showtime Highlights"><img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=600&q=80" alt="Colorful live stage"><span><strong>Showtime Highlights</strong><small>5 photos · July 2026</small></span><i data-lucide="expand"></i></button>
+                </div>
+                <p class="muted-text gallery-note">Demo images are illustrative. Replace them with your workshop's approved photos.</p>
+            </section>
+
+            <section class="dashboard-section" id="messages" data-title="Messages">
+                <div class="page-heading"><div><span class="eyebrow">STAY IN THE LOOP</span><h1>Messages</h1><p>Updates and notes from your StageSprouts team.</p></div><span class="soft-badge"><i data-lucide="mail"></i> Your inbox</span></div>
+                <div class="messages-layout">
+                    <div class="panel inbox-panel"><div class="panel-heading"><h3>Conversations</h3><span class="muted-text">3 messages</span></div>
+                        <button class="inbox-item selected" data-message="0"><span class="message-avatar">MO</span><span><strong>Ms. Olivia</strong><small>Little Stars Acting</small><p>Reminder about Saturday's rehearsal...</p></span><small>Today</small></button>
+                        <button class="inbox-item" data-message="1"><span class="message-avatar gold-avatar">SS</span><span><strong>StageSprouts Team</strong><small>General Announcement</small><p>Spring Showcase photos are ready!</p></span><small>Yesterday</small></button>
+                        <button class="inbox-item" data-message="2"><span class="message-avatar green-avatar">ME</span><span><strong>Mr. Ethan</strong><small>Musical Theater</small><p>Alex is making wonderful progress...</p></span><small>Oct 9</small></button>
+                    </div>
+                    <div class="panel conversation-panel"><div class="conversation-header"><span class="message-avatar" id="conversationAvatar">MO</span><div><strong id="conversationName">Ms. Olivia</strong><small id="conversationCourse">Little Stars Acting</small></div></div><div class="conversation-body" id="conversationBody"></div><form id="messageForm" class="message-compose"><input id="messageInput" placeholder="Write a message..." required aria-label="Write a message"><button class="btn btn-primary" type="submit" aria-label="Send message"><i data-lucide="send"></i></button></form><small class="muted-text">Demo messages stay in this page only.</small></div>
+                </div>
+            </section>
+
+            <section class="dashboard-section" id="profile" data-title="My Profile">
+                <div class="page-heading"><div><span class="eyebrow">YOUR FAMILY ACCOUNT</span><h1>My Profile</h1><p>Manage your contact details and your child's information.</p></div></div>
+                <div class="profile-layout">
+                    <div class="panel profile-card"><div class="large-avatar">JD</div><h3>Jordan Davis</h3><p>Parent / Guardian</p><span class="status status-confirmed">Account active</span><div class="profile-contact"><i data-lucide="mail"></i> jordan@example.com</div><div class="profile-contact"><i data-lucide="phone"></i> +91 98765 43210</div><button class="btn btn-outline full-width" data-section="settings">Account Settings</button></div>
+                    <div class="panel"><div class="panel-heading"><div><span class="eyebrow">PERSONAL INFORMATION</span><h3>Parent Details</h3></div><i data-lucide="user-round"></i></div>
+                        <form id="profileForm" class="form-grid"><label>First name<input name="firstName" value="Jordan" required></label><label>Last name<input name="lastName" value="Davis" required></label><label>Email address<input name="email" type="email" value="jordan@example.com" required></label><label>Phone number<input name="phone" type="tel" value="+91 98765 43210" required></label><label class="full-span">Home address<input name="address" value="Bengaluru, Karnataka, India"></label><div class="full-span"><button class="btn btn-primary" type="submit">Save Changes</button></div></form>
+                    </div>
+                </div>
+                <div class="panel child-details"><div class="panel-heading"><div><span class="eyebrow">YOUNG PERFORMER</span><h3>Child Details</h3></div><span class="child-level">✦ Rising Star</span></div><div class="child-details-grid"><div class="child-avatar">AD</div><div><small>Full name</small><strong>Alex Davis</strong></div><div><small>Age group</small><strong>8 years · Junior</strong></div><div><small>Enrolled workshops</small><strong>3 active classes</strong></div><div><small>Emergency contact</small><strong>+91 98765 43210</strong></div></div></div>
+            </section>
+
+            <section class="dashboard-section" id="settings" data-title="Settings">
+                <div class="page-heading"><div><span class="eyebrow">MAKE IT YOURS</span><h1>Account Settings</h1><p>Choose how you receive updates from StageSprouts.</p></div></div>
+                <div class="settings-grid">
+                    <div class="panel settings-panel"><div class="panel-heading"><div><span class="eyebrow">NOTIFICATIONS</span><h3>Communication Preferences</h3></div><i data-lucide="bell-ring"></i></div>
+                        <label class="setting-row"><span><strong>Rehearsal reminders</strong><small>Reminders before each session.</small></span><input type="checkbox" checked></label>
+                        <label class="setting-row"><span><strong>Workshop announcements</strong><small>News about new classes and events.</small></span><input type="checkbox" checked></label>
+                        <label class="setting-row"><span><strong>Payment reminders</strong><small>Updates about upcoming dues.</small></span><input type="checkbox" checked></label>
+                        <label class="setting-row"><span><strong>Photo gallery updates</strong><small>Know when new photos are added.</small></span><input type="checkbox"></label>
+                        <label class="setting-row"><span><strong>Monthly newsletter</strong><small>Highlights from our community.</small></span><input type="checkbox"></label>
+                        <button class="btn btn-primary" id="saveSettings">Save Preferences</button>
+                    </div>
+                    <div class="panel settings-panel"><div class="panel-heading"><div><span class="eyebrow">DISPLAY</span><h3>Appearance</h3></div><i data-lucide="sun-moon"></i></div><div class="setting-row"><span><strong>Color theme</strong><small>Switch between light and dark mode.</small></span><button class="btn btn-outline" id="settingsThemeToggle">Toggle theme</button></div><div class="setting-row"><span><strong>Text direction</strong><small>Switch between LTR and RTL.</small></span><button class="btn btn-outline" id="settingsDirectionToggle">Toggle direction</button></div><p class="settings-note">Appearance preferences are saved in this browser.</p></div>
+                </div>
+            </section>
+
+            <section class="dashboard-section" id="contact" data-title="Help & Support">
+                <div class="page-heading"><div><span class="eyebrow">WE'RE HERE FOR YOU</span><h1>Help &amp; Support</h1><p>Need help with enrollment, schedules, or your account? Let's talk.</p></div></div>
+                <div class="support-banner"><div><span class="hero-pill">YOUR STAGESPROUTS TEAM</span><h2>Every question deserves a helping hand.</h2><p>Our friendly team is here to make your family's workshop experience smooth and joyful.</p></div><i data-lucide="messages-square"></i></div>
+                <div class="support-grid"><article class="panel support-card"><i data-lucide="mail"></i><h3>Email Us</h3><p>For enrollment or account questions.</p><a href="mailto:hello@stagesprouts.example">hello@stagesprouts.example</a></article><article class="panel support-card"><i data-lucide="phone"></i><h3>Call Our Team</h3><p>Speak to our parent support team.</p><a href="tel:+919876543210">+91 98765 43210</a></article><article class="panel support-card"><i data-lucide="clock-3"></i><h3>Support Hours</h3><p>Monday to Saturday</p><strong>9 AM – 6 PM</strong></article></div>
+                <div class="panel support-form-panel"><div class="panel-heading"><div><span class="eyebrow">SEND US A NOTE</span><h3>How can we help?</h3></div></div><form id="supportForm" class="form-grid"><label>Your name<input name="name" value="Jordan Davis" required></label><label>Email address<input name="email" type="email" value="jordan@example.com" required></label><label class="full-span">Topic<select name="topic" required><option value="">Choose a topic</option><option>Workshop enrollment</option><option>Rehearsal schedule</option><option>Payments and billing</option><option>Performance photos</option><option>Account help</option><option>Other</option></select></label><label class="full-span">Message<textarea name="message" rows="4" placeholder="Tell us how we can help..." required></textarea></label><div class="full-span"><button class="btn btn-primary" type="submit"><i data-lucide="send"></i> Send Message</button></div></form></div>
+            </section>
+
+            <footer class="dashboard-footer"><span>© 2026 StageSprouts Kids Theater &amp; Drama Workshop</span><span>Made for little stars <b>✦</b></span></footer>
+        </div>
+    </main>
+</div>
+
+<div class="modal-backdrop" id="modalBackdrop" aria-hidden="true"><div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="modal-close" id="modalClose" aria-label="Close dialog"><i data-lucide="x"></i></button><div id="modalContent"></div></div></div>
+<div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const body = document.body;
+    const html = document.documentElement;
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("sidebarOverlay");
+    const menuToggle = document.getElementById("menuToggle");
+    const profileToggle = document.getElementById("profileToggle");
+    const profileDropdown = document.getElementById("profileDropdown");
+    const notificationToggle = document.getElementById("notificationToggle");
+    const notificationDropdown = document.getElementById("notificationDropdown");
+    const modalBackdrop = document.getElementById("modalBackdrop");
+    const modalContent = document.getElementById("modalContent");
+    const titles = {
+        overview: "Dashboard Overview", workshops: "Workshop Sessions",
+        schedule: "Rehearsal Schedule", payments: "Payments",
+        performances: "Performance Photos", messages: "Messages",
+        profile: "My Profile", settings: "Settings", contact: "Help & Support"
+    };
+    const messages = [
+        { initials: "MO", name: "Ms. Olivia", course: "Little Stars Acting", incoming: ["Hello Jordan! Just a reminder that Alex's acting rehearsal is this Saturday at 10 AM in Studio A.", "Please bring a water bottle and the short script sent home last week. Looking forward to seeing Alex!"] },
+        { initials: "SS", name: "StageSprouts Team", course: "General Announcement", incoming: ["Spring Showcase photos are ready to view in your Performance Photos gallery.", "Thank you for being part of our creative community!"] },
+        { initials: "ME", name: "Mr. Ethan", course: "Musical Theater", incoming: ["Alex is making wonderful progress in musical theater.", "Keep encouraging practice at home. We are excited for the next session!"] }
+    ];
+    let activeMessage = 0;
+    let sentMessages = [];
+
+    const savedTheme = localStorage.getItem("stagesprouts-theme");
+    const savedDirection = localStorage.getItem("stagesprouts-direction");
+    if (savedTheme === "dark") body.classList.add("dark-mode");
+    html.setAttribute("dir", savedDirection || "ltr");
+
+    function icons() {
+        if (window.lucide) window.lucide.createIcons();
+    }
+
+    function toast(message) {
+        const item = document.createElement("div");
+        item.className = "toast-message";
+        const icon = document.createElement("i");
+        icon.setAttribute("data-lucide", "check-circle-2");
+        const text = document.createElement("span");
+        text.textContent = message;
+        item.append(icon, text);
+        document.getElementById("toastContainer").appendChild(item);
+        icons();
+        setTimeout(() => item.remove(), 3000);
+    }
+
+    function closeMenus() {
+        profileDropdown.classList.remove("dropdown-open");
+        notificationDropdown.classList.remove("dropdown-open");
+        profileToggle.setAttribute("aria-expanded", "false");
+        notificationToggle.setAttribute("aria-expanded", "false");
+    }
+
+    function closeSidebar() {
+        sidebar.classList.remove("sidebar-open");
+        overlay.classList.remove("overlay-visible");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.innerHTML = '<i data-lucide="menu"></i>';
+        icons();
+    }
+
+    function showSection(id) {
+        const section = document.getElementById(id);
+        if (!section || !section.classList.contains("dashboard-section")) return;
+        document.querySelectorAll(".dashboard-section").forEach(item => item.classList.toggle("active-section", item.id === id));
+        document.querySelectorAll(".nav-item[data-section]").forEach(item => item.classList.toggle("active", item.dataset.section === id));
+        document.getElementById("pageTitle").textContent = titles[id] || "Dashboard";
+        closeMenus();
+        closeSidebar();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        icons();
+    }
+
+    function toggleTheme() {
+        body.classList.toggle("dark-mode");
+        localStorage.setItem("stagesprouts-theme", body.classList.contains("dark-mode") ? "dark" : "light");
+        document.getElementById("themeToggle").innerHTML = body.classList.contains("dark-mode") ? '<i data-lucide="sun"></i>' : '<i data-lucide="moon"></i>';
+        icons();
+    }
+
+    function toggleDirection() {
+        const direction = html.getAttribute("dir") === "rtl" ? "ltr" : "rtl";
+        html.setAttribute("dir", direction);
+        localStorage.setItem("stagesprouts-direction", direction);
+        toast("Text direction: " + direction.toUpperCase());
+    }
+
+    function openModal(title, content) {
+        modalContent.replaceChildren();
+        const kicker = document.createElement("span");
+        kicker.className = "eyebrow";
+        kicker.textContent = "STAGESPROUTS PARENT PORTAL";
+        const heading = document.createElement("h2");
+        heading.id = "modalTitle";
+        heading.textContent = title;
+        modalContent.append(kicker, heading);
+        const wrapper = document.createElement("div");
+        wrapper.innerHTML = content;
+        modalContent.appendChild(wrapper);
+        modalBackdrop.classList.add("modal-visible");
+        modalBackdrop.setAttribute("aria-hidden", "false");
+        icons();
+    }
+
+    function closeModal() {
+        modalBackdrop.classList.remove("modal-visible");
+        modalBackdrop.setAttribute("aria-hidden", "true");
+        modalContent.replaceChildren();
+    }
+
+    function renderConversation() {
+        const message = messages[activeMessage];
+        document.getElementById("conversationAvatar").textContent = message.initials;
+        document.getElementById("conversationName").textContent = message.name;
+        document.getElementById("conversationCourse").textContent = message.course;
+        const area = document.getElementById("conversationBody");
+        area.replaceChildren();
+        const day = document.createElement("span");
+        day.className = "conversation-day";
+        day.textContent = "Recent messages";
+        area.appendChild(day);
+        message.incoming.forEach((text, index) => {
+            const bubble = document.createElement("div");
+            bubble.className = "chat-bubble received";
+            const paragraph = document.createElement("p");
+            paragraph.textContent = text;
+            const time = document.createElement("small");
+            time.textContent = index === 0 ? "9:15 AM" : "9:16 AM";
+            bubble.append(paragraph, time);
+            area.appendChild(bubble);
+        });
+        sentMessages.filter(item => item.index === activeMessage).forEach(item => {
+            const bubble = document.createElement("div");
+            bubble.className = "chat-bubble sent";
+            const paragraph = document.createElement("p");
+            paragraph.textContent = item.text;
+            const time = document.createElement("small");
+            time.textContent = "Just now";
+            bubble.append(paragraph, time);
+            area.appendChild(bubble);
+        });
+        area.scrollTop = area.scrollHeight;
+    }
+
+    document.addEventListener("click", event => {
+        const sectionButton = event.target.closest("[data-section]");
+        if (sectionButton) showSection(sectionButton.dataset.section);
+    });
+
+    menuToggle.addEventListener("click", () => {
+        const opened = sidebar.classList.toggle("sidebar-open");
+        overlay.classList.toggle("overlay-visible", opened);
+        menuToggle.setAttribute("aria-expanded", String(opened));
+        menuToggle.innerHTML = opened ? '<i data-lucide="x"></i>' : '<i data-lucide="menu"></i>';
+        icons();
+    });
+    overlay.addEventListener("click", closeSidebar);
+
+    document.getElementById("themeToggle").addEventListener("click", toggleTheme);
+    document.getElementById("directionToggle").addEventListener("click", toggleDirection);
+    document.getElementById("settingsThemeToggle").addEventListener("click", toggleTheme);
+    document.getElementById("settingsDirectionToggle").addEventListener("click", toggleDirection);
+
+    profileToggle.addEventListener("click", event => {
+        event.stopPropagation();
+        const opened = profileDropdown.classList.toggle("dropdown-open");
+        profileToggle.setAttribute("aria-expanded", String(opened));
+        notificationDropdown.classList.remove("dropdown-open");
+        notificationToggle.setAttribute("aria-expanded", "false");
+    });
+    notificationToggle.addEventListener("click", event => {
+        event.stopPropagation();
+        const opened = notificationDropdown.classList.toggle("dropdown-open");
+        notificationToggle.setAttribute("aria-expanded", String(opened));
+        profileDropdown.classList.remove("dropdown-open");
+        profileToggle.setAttribute("aria-expanded", "false");
+    });
+
+    document.querySelectorAll("[data-profile-section]").forEach(button => {
+        button.addEventListener("click", () => showSection(button.dataset.profileSection));
+    });
+    document.addEventListener("click", event => {
+        if (!event.target.closest(".dropdown-wrap")) closeMenus();
+    });
+
+    document.addEventListener("keydown", event => {
+        if (event.key === "Escape") {
+            closeSidebar();
+            closeMenus();
+            closeModal();
+        }
+    });
+    window.addEventListener("resize", () => {
+        if (window.innerWidth > 768) closeSidebar();
+    });
+
+    const search = document.getElementById("workshopSearch");
+    const workshopFilter = document.getElementById("workshopFilter");
+    function filterWorkshops() {
+        const query = search.value.trim().toLowerCase();
+        let count = 0;
+        document.querySelectorAll(".workshop-card").forEach(card => {
+            const matches = card.dataset.name.toLowerCase().includes(query) && (workshopFilter.value === "all" || (workshopFilter.value === "enrolled" && card.dataset.enrolled === "true") || (workshopFilter.value === "available" && card.dataset.enrolled === "false"));
+            card.hidden = !matches;
+            if (matches) count++;
+        });
+        document.getElementById("workshopEmpty").hidden = count > 0;
+    }
+    search.addEventListener("input", filterWorkshops);
+    workshopFilter.addEventListener("change", filterWorkshops);
+
+    document.querySelectorAll(".enroll-button").forEach(button => {
+        button.addEventListener("click", () => {
+            const course = button.dataset.course;
+            openModal("Enroll in " + course, `
+                <p class="modal-description">Submit a demo enrollment request for your child.</p>
+                <form id="enrollmentForm" class="modal-form">
+                    <label>Child name<input name="child" value="Alex Davis" required></label>
+                    <label>Workshop<input value="${course}" readonly></label>
+                    <label>Parent email<input name="email" type="email" value="jordan@example.com" required></label>
+                    <button class="btn btn-primary full-width" type="submit">Submit Enrollment Request</button>
+                </form>`);
+            document.getElementById("enrollmentForm").addEventListener("submit", event => {
+                event.preventDefault();
+                closeModal();
+                toast("Demo enrollment request submitted");
+            });
+        });
+    });
+
+    document.getElementById("paymentFilter").addEventListener("change", event => {
+        document.querySelectorAll("#paymentRows tr").forEach(row => {
+            row.hidden = event.target.value !== "all" && row.dataset.paymentStatus !== event.target.value;
+        });
+    });
+    document.querySelectorAll(".pay-button").forEach(button => {
+        button.addEventListener("click", () => {
+            openModal("Payment preview", '<p class="modal-description">October Workshop Fee</p><h2>₹1,200</h2><p class="modal-description">This demo is not connected to a live payment gateway. No payment will be collected.</p><button class="btn btn-primary full-width" id="closePayment">Close</button>');
+            document.getElementById("closePayment").addEventListener("click", closeModal);
+        });
+    });
+    document.querySelectorAll(".receipt-button").forEach(button => {
+        button.addEventListener("click", () => {
+            openModal("Payment receipt", '<div class="receipt-box"><i data-lucide="receipt"></i><p></p><small>StageSprouts · Demo receipt</small></div><button class="btn btn-outline full-width" id="closeReceipt">Close receipt</button>');
+            modalContent.querySelector(".receipt-box p").textContent = button.dataset.receipt;
+            document.getElementById("closeReceipt").addEventListener("click", closeModal);
+            icons();
+        });
+    });
+
+    const galleryFilter = document.getElementById("galleryFilter");
+    function filterGallery() {
+        document.querySelectorAll(".gallery-card").forEach(card => {
+            card.hidden = galleryFilter.value !== "all" && card.dataset.album !== galleryFilter.value;
+        });
+    }
+    galleryFilter.addEventListener("change", filterGallery);
+
+    document.querySelectorAll(".gallery-card, [data-gallery-photo]").forEach(button => {
+        button.addEventListener("click", () => {
+            const source = button.dataset.photo || document.querySelectorAll("[data-gallery-photo] img")[Number(button.dataset.galleryPhoto)]?.src;
+            const caption = button.dataset.caption || button.querySelector("span")?.textContent || "Performance Photo";
+            if (!source) return;
+            openModal(caption, '<img class="modal-photo" alt="Performance photo"><p class="modal-description">StageSprouts performance gallery</p>');
+            modalContent.querySelector(".modal-photo").src = source;
+            modalContent.querySelector(".modal-photo").alt = caption;
+        });
+    });
+
+    document.querySelectorAll("[data-message]").forEach(button => {
+        button.addEventListener("click", () => {
+            activeMessage = Number(button.dataset.message);
+            document.querySelectorAll("[data-message]").forEach(item => item.classList.toggle("selected", item === button));
+            renderConversation();
+        });
+    });
+    document.getElementById("messageForm").addEventListener("submit", event => {
+        event.preventDefault();
+        const input = document.getElementById("messageInput");
+        const text = input.value.trim();
+        if (!text) return;
+        sentMessages.push({ index: activeMessage, text });
+        input.value = "";
+        renderConversation();
+        toast("Demo message added");
+    });
+
+    document.getElementById("profileForm").addEventListener("submit", event => {
+        event.preventDefault();
+        toast("Profile changes saved for this demo");
+    });
+    document.getElementById("supportForm").addEventListener("submit", event => {
+        event.preventDefault();
+        event.target.reset();
+        toast("Demo support message submitted");
+    });
+    document.getElementById("saveSettings").addEventListener("click", () => toast("Notification preferences saved for this demo"));
+
+    function logout() {
+        openModal("Log out", '<p class="modal-description">This is a dashboard demo. No real account session is connected.</p><button class="btn btn-primary full-width" id="confirmLogout">Return to Overview</button>');
+        document.getElementById("confirmLogout").addEventListener("click", () => {
+            closeModal();
+            showSection("overview");
+            toast("Returned to dashboard overview");
+        });
+    }
+    document.getElementById("sidebarLogout").addEventListener("click", logout);
+    document.getElementById("profileLogout").addEventListener("click", logout);
+    document.getElementById("modalClose").addEventListener("click", closeModal);
+    modalBackdrop.addEventListener("click", event => {
+        if (event.target === modalBackdrop) closeModal();
+    });
+
+    document.getElementById("themeToggle").innerHTML = body.classList.contains("dark-mode") ? '<i data-lucide="sun"></i>' : '<i data-lucide="moon"></i>';
+    renderConversation();
+    showSection("overview");
+    icons();
+});
+</script>
+</body>
+</html>

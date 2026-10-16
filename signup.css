@@ -1,0 +1,436 @@
+/* StageSprouts Signup Page */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800&display=swap');
+
+:root {
+    --primary: #5B21B6;
+    --secondary: #F5B82E;
+    --bg-color: #FFFFFF;
+    --text-color: #171329;
+    --card-bg: #FFFFFF;
+    --border-color: rgba(91, 33, 182, 0.16);
+    --primary-light: rgba(91, 33, 182, 0.09);
+    --secondary-light: rgba(245, 184, 46, 0.15);
+    --text-color-rgb: 23, 19, 41;
+    --heading-color: #281052;
+    --text-light: #625B72;
+    --font-heading: "Playfair Display", serif;
+    --font-body: "Manrope", sans-serif;
+    --primary-dark: #43158A;
+    --secondary-dark: #D99A12;
+    --transition-fast: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body.dark,
+body.dark-mode {
+    --primary: #A855F7;
+    --secondary: #F5B82E;
+    --bg-color: #080808;
+    --text-color: #FFFFFF;
+    --card-bg: #141414;
+    --border-color: rgba(245, 184, 46, 0.22);
+    --primary-light: rgba(168, 85, 247, 0.16);
+    --secondary-light: rgba(245, 184, 46, 0.14);
+    --heading-color: #FFFFFF;
+    --text-light: #C8C1D5;
+    --primary-dark: #9333EA;
+    --secondary-dark: #FFD166;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+    width: 100%;
+    min-height: 100%;
+    background: var(--bg-color);
+}
+
+body {
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow: hidden;
+    color: var(--text-color);
+    font-family: var(--font-body);
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+button, input { font: inherit; }
+a { color: inherit; text-decoration: none; }
+button:focus-visible, a:focus-visible, input:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+}
+
+.login-page {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    padding: 52px 24px 18px;
+    overflow: hidden;
+    isolation: isolate;
+    background:
+        radial-gradient(ellipse at 12% 18%, var(--primary-light), transparent 36%),
+        radial-gradient(ellipse at 88% 82%, var(--secondary-light), transparent 34%),
+        var(--bg-color);
+}
+
+.background-effects {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.ambient-glow {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    filter: blur(70px);
+    opacity: .45;
+    animation: glow-drift 12s ease-in-out infinite alternate;
+}
+
+.glow-one { top: -140px; left: -110px; background: var(--primary-light); }
+.glow-two { right: -130px; bottom: -150px; background: rgba(245,184,46,.18); animation-delay: -4s; }
+
+.stage-light {
+    position: absolute;
+    top: -15%;
+    width: 35%;
+    height: 75%;
+    opacity: .22;
+    filter: blur(20px);
+    transform-origin: top center;
+    animation: stage-pulse 8s ease-in-out infinite alternate;
+}
+
+.stage-light-left { left: 3%; background: linear-gradient(180deg,var(--secondary-light),transparent); transform: rotate(24deg); }
+.stage-light-right { right: 3%; background: linear-gradient(180deg,var(--primary-light),transparent); transform: rotate(-24deg); animation-delay: -4s; }
+
+.stage-curtain {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 9%;
+    min-width: 48px;
+    opacity: .15;
+    background: repeating-linear-gradient(90deg,var(--primary) 0,var(--primary) 12px,transparent 12px,transparent 27px);
+    mask-image: linear-gradient(180deg,black,transparent 90%);
+}
+
+.stage-curtain-left { left: 0; }
+.stage-curtain-right { right: 0; }
+
+.theater-mask {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    width: 70px;
+    height: 70px;
+    border: 1px solid var(--border-color);
+    border-radius: 22px;
+    color: var(--primary);
+    background: var(--card-bg);
+    box-shadow: 0 16px 45px rgba(35,16,70,.07);
+    animation: mask-float 6s ease-in-out infinite;
+}
+
+.theater-mask svg { width: 30px; height: 30px; stroke-width: 1.5; }
+.mask-left { top: 28%; left: 12%; transform: rotate(-12deg); }
+.mask-right { right: 12%; bottom: 22%; color: var(--secondary-dark); animation-delay: -3s; }
+
+.stage-performer {
+    position: absolute;
+    top: 58%;
+    left: 13%;
+    display: grid;
+    place-items: center;
+    width: 54px;
+    height: 54px;
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    color: var(--secondary-dark);
+    background: var(--secondary-light);
+    animation: performer-float 7s ease-in-out infinite;
+}
+
+.stage-performer svg { width: 25px; height: 25px; }
+.stage-floor { position: absolute; right: 0; bottom: -100px; left: 0; height: 200px; background: radial-gradient(ellipse,var(--primary-light),transparent 68%); }
+
+.floating-star { position: absolute; color: var(--secondary); animation: star-float 5s ease-in-out infinite; }
+.floating-star svg { width: 20px; height: 20px; }
+.star-one { top: 19%; right: 28%; }
+.star-two { bottom: 19%; left: 28%; animation-delay: -2s; }
+.star-three { top: 32%; right: 14%; animation-delay: -3s; }
+
+.orbit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: min(690px,80vw);
+    aspect-ratio: 1;
+    border: 1px dashed var(--border-color);
+    border-radius: 50%;
+    opacity: .55;
+    transform: translate(-50%,-50%);
+    animation: orbit-breathe 10s ease-in-out infinite;
+}
+
+.utility-controls {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+html[dir="rtl"] .utility-controls { right: auto; left: 24px; }
+
+.header-icon-btn {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    color: var(--text-color);
+    background: var(--card-bg);
+    cursor: pointer;
+    transition: var(--transition-fast);
+    box-shadow: 0 5px 20px rgba(35,16,70,.04);
+}
+
+.header-icon-btn:hover { color: var(--primary); border-color: var(--primary); background: var(--primary-light); transform: translateY(-2px); }
+.header-icon-btn svg { width: 19px; height: 19px; }
+
+.login-card {
+    position: relative;
+    z-index: 2;
+    width: min(100%, 620px);
+    max-height: none;
+    padding: 24px 38px 22px;
+    overflow: visible;
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    background: var(--card-bg);
+    box-shadow: 0 25px 80px rgba(35,16,70,.10),0 3px 12px rgba(35,16,70,.035);
+    animation: card-enter .7s cubic-bezier(.16,1,.3,1) both;
+}
+
+.login-card::before {
+    position: absolute;
+    top: 0;
+    right: 22%;
+    left: 22%;
+    height: 3px;
+    border-radius: 0 0 10px 10px;
+    background: linear-gradient(90deg,var(--primary),var(--secondary),var(--primary));
+    background-size: 200% 100%;
+    content: "";
+    animation: border-shimmer 5s linear infinite;
+}
+
+.brand-area { display: flex; justify-content: center; margin-bottom: 13px; }
+.meatcraft-logo { display: inline-flex; align-items: center; justify-content: center; gap: 10px; width: 300px; height: 55px; max-width: 100%; }
+.logo-badge { display: flex; align-items: center; justify-content: center; flex: 0 0 48px; width: 48px; height: 48px; }
+.brand-logo-img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.logo-text-group { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 3px; min-width: 0; }
+.logo-brand-title { color: var(--primary); font-family: var(--font-heading); font-size: 25px; font-weight: 800; line-height: 1.1; letter-spacing: -.7px; white-space: nowrap; }
+.brand-craft { color: var(--secondary); }
+.logo-brand-subtitle { display: block; color: var(--text-light); font-size: 8px; font-weight: 800; line-height: 1.5; letter-spacing: .4px; white-space: nowrap; }
+
+.welcome-label { display: flex; align-items: center; justify-content: center; gap: 7px; margin-bottom: 4px; color: var(--primary); font-size: 10px; font-weight: 800; letter-spacing: 1.5px; text-align: center; text-transform: uppercase; }
+.welcome-label svg { width: 14px; height: 14px; color: var(--secondary-dark); }
+.login-heading { color: var(--heading-color); font-family: var(--font-heading); font-size: clamp(25px,3vw,32px); font-weight: 700; line-height: 1.2; text-align: center; letter-spacing: -.7px; }
+.login-description { margin: 5px 0 18px; color: var(--text-light); font-size: 12px; line-height: 1.6; text-align: center; }
+
+.login-form {
+    display: grid;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 12px 18px;
+}
+
+.form-field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.form-label { color: var(--text-color); font-size: 12px; font-weight: 800; }
+
+.input-wrap { position: relative; display: flex; align-items: center; width: 100%; }
+.input-icon { position: absolute; left: 13px; display: grid; place-items: center; color: var(--text-light); pointer-events: none; }
+.input-icon svg { width: 17px; height: 17px; }
+html[dir="rtl"] .input-icon { right: 13px; left: auto; }
+
+.form-input {
+    width: 100%;
+    height: 40px;
+    padding: 0 42px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    outline: none;
+    color: var(--text-color);
+    background: var(--bg-color);
+    font-size: 12px;
+    transition: var(--transition-fast);
+}
+
+.form-input::placeholder { color: var(--text-light); opacity: .8; }
+.form-input:hover { border-color: var(--primary); }
+.form-input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-light); }
+
+.password-toggle { position: absolute; right: 10px; display: grid; place-items: center; width: 28px; height: 32px; border: 0; border-radius: 7px; color: var(--text-light); background: transparent; cursor: pointer; }
+.password-toggle:hover { color: var(--primary); }
+.password-toggle svg { width: 17px; height: 17px; }
+html[dir="rtl"] .password-toggle { right: auto; left: 10px; }
+
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear { display: none; }
+
+input::-webkit-credentials-auto-fill-button { visibility: hidden; display: none !important; pointer-events: none; }
+
+.form-options { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-top: -1px; }
+.remember-option { display: inline-flex; align-items: flex-start; gap: 7px; color: var(--text-light); font-size: 11px; line-height: 1.6; cursor: pointer; }
+.remember-option input { flex: 0 0 auto; width: 14px; height: 14px; margin-top: 2px; accent-color: var(--primary); cursor: pointer; }
+.forgot-link { color: var(--primary); font-size: 11px; font-weight: 800; }
+.forgot-link:hover { color: var(--secondary-dark); }
+
+.login-form > .form-options,
+.login-form > .form-message,
+.login-form > .login-submit,
+.login-form > .divider,
+.login-form > .social-buttons,
+.login-form > .signup-prompt,
+.login-form > .security-note {
+    grid-column: 1 / -1;
+}
+
+.login-submit { display: flex; align-items: center; justify-content: center; gap: 9px; width: 100%; min-height: 40px; padding: 10px 20px; border: 1px solid var(--primary); border-radius: 10px; color: #FFFFFF; background: var(--primary); font-size: 13px; font-weight: 800; cursor: pointer; transition: var(--transition-fast); }
+.login-submit:hover { border-color: var(--secondary); background: var(--secondary); color: #171329; transform: translateY(-2px); }
+.login-submit svg { width: 17px; height: 17px; }
+html[dir="rtl"] .login-submit svg { transform: rotate(180deg); }
+
+.divider { display: flex; align-items: center; gap: 12px; margin: 3px 0 0; color: var(--text-light); font-size: 10px; font-weight: 700; }
+.divider::before, .divider::after { flex: 1; height: 1px; background: var(--border-color); content: ""; }
+.social-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.social-button { display: flex; align-items: center; justify-content: center; gap: 9px; width: 100%; min-width: 0; min-height: 38px; padding: 8px 12px; border: 1px solid var(--border-color); border-radius: 10px; color: var(--text-color); background: var(--card-bg); font-size: 12px; font-weight: 800; cursor: pointer; transition: var(--transition-fast); }
+.social-button:hover { border-color: var(--primary); background: var(--primary-light); transform: translateY(-1px); }
+.social-button i { flex-shrink: 0; font-size: 18px; }
+.google-icon { color: #4285F4; }
+.apple-icon { color: #000000; font-size: 20px; }
+body.dark-mode .apple-icon { color: #FFFFFF; }
+.social-button:hover .google-icon { color: #4285F4; }
+body.dark-mode .social-button:hover .apple-icon { color: #FFFFFF; }
+
+.signup-prompt { margin-top: 0; color: var(--text-light); font-size: 12px; text-align: center; line-height: 1.6; }
+.signup-link { color: var(--primary); font-weight: 800; }
+.signup-link:hover { color: var(--secondary-dark); text-decoration: underline; }
+.security-note { display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: -3px; color: var(--text-light); font-size: 10px; text-align: center; }
+.security-note svg { width: 13px; height: 13px; color: var(--primary); }
+.form-message { display: none; padding: 9px 12px; border: 1px solid var(--border-color); border-radius: 9px; color: var(--text-color); background: var(--primary-light); font-size: 12px; line-height: 1.6; }
+.form-message.visible { display: block; }
+
+html[dir="rtl"] .login-card,
+html[dir="rtl"] .login-form { text-align: right; }
+html[dir="rtl"] .login-heading,
+html[dir="rtl"] .login-description,
+html[dir="rtl"] .welcome-label,
+html[dir="rtl"] .signup-prompt,
+html[dir="rtl"] .security-note,
+html[dir="rtl"] .divider { text-align: center; }
+
+@keyframes card-enter { from { opacity: 0; transform: translateY(18px) scale(.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes mask-float { 0%,100% { margin-top: 0; } 50% { margin-top: -13px; } }
+@keyframes performer-float { 0%,100% { transform: translateY(0) rotate(-7deg); } 50% { transform: translateY(-14px) rotate(7deg); } }
+@keyframes glow-drift { from { transform: translate(0,0) scale(1); } to { transform: translate(35px,24px) scale(1.15); } }
+@keyframes stage-pulse { from { opacity: .12; } to { opacity: .3; } }
+@keyframes star-float { 0%,100% { transform: translateY(0) rotate(0); opacity: .65; } 50% { transform: translateY(-12px) rotate(18deg); opacity: 1; } }
+@keyframes orbit-breathe { 0%,100% { opacity: .3; transform: translate(-50%,-50%) scale(.97); } 50% { opacity: .65; transform: translate(-50%,-50%) scale(1.03); } }
+@keyframes border-shimmer { to { background-position: 200% 0; } }
+
+@media (max-width: 1024px) {
+    .login-card { width: min(100%, 680px); padding: 22px 30px 20px; }
+    .theater-mask { width: 60px; height: 60px; }
+    .mask-left { left: 5%; }
+    .mask-right { right: 5%; }
+    .stage-performer { left: 5%; }
+}
+
+@media (max-width: 768px) {
+    body { overflow: auto; }
+    .login-page { min-height: 100dvh; height: auto; padding: 70px 18px 24px; overflow: visible; }
+    .utility-controls { top: 15px; right: 18px; gap: 8px; }
+    html[dir="rtl"] .utility-controls { right: auto; left: 18px; }
+    .header-icon-btn { width: 39px; height: 39px; border-radius: 11px; }
+    .login-card { width: min(100%, 520px); padding: 22px 25px 20px; border-radius: 21px; }
+    .brand-area { margin-bottom: 14px; }
+    .meatcraft-logo { width: 245px; height: 52px; gap: 8px; }
+    .logo-badge { flex-basis: 45px; width: 45px; height: 45px; }
+    .logo-brand-title { font-size: 22px; }
+    .logo-brand-subtitle { font-size: 7px; letter-spacing: .2px; }
+    .login-form { gap: 12px; }
+    .theater-mask { width: 48px; height: 48px; border-radius: 15px; opacity: .6; }
+    .theater-mask svg { width: 24px; height: 24px; }
+    .mask-left { top: 15%; left: 3%; }
+    .mask-right { right: 3%; bottom: 13%; }
+    .stage-performer { top: 70%; left: 4%; width: 40px; height: 40px; }
+    .stage-curtain { width: 5%; min-width: 18px; opacity: .1; }
+    .orbit { width: 95vw; }
+    .star-one { right: 14%; }
+    .star-two { left: 15%; }
+}
+
+@media (max-width: 600px) {
+    .login-form { grid-template-columns: 1fr; }
+    .login-form > .form-options,
+    .login-form > .form-message,
+    .login-form > .login-submit,
+    .login-form > .divider,
+    .login-form > .social-buttons,
+    .login-form > .signup-prompt,
+    .login-form > .security-note { grid-column: auto; }
+}
+
+@media (max-width: 360px) {
+    .login-page { padding: 62px 12px 16px; }
+    .utility-controls { top: 12px; right: 12px; gap: 6px; }
+    html[dir="rtl"] .utility-controls { right: auto; left: 12px; }
+    .header-icon-btn { width: 35px; height: 35px; }
+    .login-card { padding: 18px 17px 16px; border-radius: 18px; }
+    .brand-area { margin-bottom: 12px; }
+    .meatcraft-logo { width: 215px; height: 46px; gap: 7px; }
+    .logo-badge { flex-basis: 38px; width: 38px; height: 38px; }
+    .logo-brand-title { font-size: 19px; }
+    .logo-brand-subtitle { font-size: 6px; letter-spacing: 0; }
+    .login-heading { font-size: 25px; }
+    .login-description { margin: 6px 0 15px; font-size: 12px; }
+    .login-form { gap: 11px; }
+    .form-input { height: 42px; font-size: 12px; }
+    .login-submit { min-height: 43px; }
+    .social-buttons { gap: 7px; }
+    .social-button { min-height: 39px; gap: 6px; padding: 8px 7px; font-size: 11px; }
+    .signup-prompt { font-size: 11px; }
+    .security-note { font-size: 9px; }
+    .theater-mask, .stage-performer, .orbit { opacity: .25; }
+}
+
+@media (max-height: 740px) and (min-width: 769px) {
+    .login-page { padding-top: 66px; padding-bottom: 12px; }
+    .login-card { padding-top: 17px; padding-bottom: 16px; }
+    .brand-area { margin-bottom: 10px; }
+    .login-description { margin-top: 5px; margin-bottom: 12px; }
+    .login-form { gap: 9px 16px; }
+    .form-input { height: 37px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+    }
+}

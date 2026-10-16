@@ -1,0 +1,1103 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#5B21B6">
+    <title>Privacy Policy | StageSprouts</title>
+  <link rel="icon" type="image/png" href="logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            --primary: #5B21B6;
+            --primary-dark: #43158A;
+            --secondary: #F5B82E;
+            --bg-color: #FFFFFF;
+            --text-color: #171329;
+            --heading-color: #281052;
+            --text-light: #625B72;
+            --card-bg: #FFFFFF;
+            --border-color: rgba(91, 33, 182, 0.16);
+            --primary-light: rgba(91, 33, 182, 0.08);
+            --secondary-light: rgba(245, 184, 46, 0.15);
+            --page-padding: 24px;
+            --container-width: 900px;
+            --heading-font: "Playfair Display", serif;
+            --body-font: "Manrope", sans-serif;
+        }
+
+        body.dark-mode {
+            --primary: #A855F7;
+            --primary-dark: #7E22CE;
+            --secondary: #F5B82E;
+            --bg-color: #080808;
+            --text-color: #F5F5F5;
+            --heading-color: #FFFFFF;
+            --text-light: #C8C1D5;
+            --card-bg: #141414;
+            --border-color: rgba(168, 85, 247, 0.28);
+            --primary-light: rgba(168, 85, 247, 0.13);
+            --secondary-light: rgba(245, 184, 46, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            color-scheme: light;
+        }
+
+        html[data-theme="dark"] {
+            color-scheme: dark;
+        }
+
+        body {
+            min-height: 100vh;
+            padding: 55px var(--page-padding);
+            position: relative;
+            isolation: isolate;
+            overflow-x: hidden;
+            font-family: var(--body-font);
+            background: var(--bg-color);
+            color: var(--text-color);
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        body::before,
+        body::after {
+            content: "";
+            position: fixed;
+            z-index: -2;
+            pointer-events: none;
+            border-radius: 50%;
+            filter: blur(5px);
+        }
+
+        body::before {
+            width: 420px;
+            height: 420px;
+            top: -170px;
+            left: -140px;
+            background: radial-gradient(circle, rgba(91, 33, 182, 0.17), transparent 70%);
+            animation: glowFloat 9s ease-in-out infinite alternate;
+        }
+
+        body::after {
+            width: 420px;
+            height: 420px;
+            right: -140px;
+            bottom: -170px;
+            background: radial-gradient(circle, rgba(245, 184, 46, 0.15), transparent 70%);
+            animation: glowFloat 11s ease-in-out infinite alternate-reverse;
+        }
+
+        body.dark-mode::before {
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.19), transparent 70%);
+        }
+
+        body.dark-mode::after {
+            background: radial-gradient(circle, rgba(245, 184, 46, 0.09), transparent 70%);
+        }
+
+        .stage-decoration {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .spotlight {
+            position: absolute;
+            top: -150px;
+            width: 280px;
+            height: 680px;
+            opacity: 0.12;
+            background: linear-gradient(to bottom, var(--secondary), transparent);
+            filter: blur(45px);
+            transform-origin: top center;
+            animation: spotlightMove 12s ease-in-out infinite alternate;
+        }
+
+        .spotlight-left {
+            left: 10%;
+            transform: rotate(25deg);
+        }
+
+        .spotlight-right {
+            right: 10%;
+            transform: rotate(-25deg);
+            animation-delay: -6s;
+        }
+
+        .floating-icon {
+            position: absolute;
+            color: var(--primary);
+            opacity: 0.25;
+            animation: iconFloat 7s ease-in-out infinite;
+        }
+
+        .floating-icon.one {
+            top: 22%;
+            left: 5%;
+        }
+
+        .floating-icon.two {
+            top: 68%;
+            right: 6%;
+            color: var(--secondary);
+            animation-delay: -3s;
+        }
+
+        .floating-icon.three {
+            top: 76%;
+            left: 10%;
+            animation-delay: -4s;
+        }
+
+        .floating-icon.four {
+            top: 16%;
+            right: 8%;
+            color: var(--secondary);
+            animation-delay: -2s;
+        }
+
+        .utility-controls {
+            position: absolute;
+            top: 22px;
+            right: var(--page-padding);
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        html[dir="rtl"] .utility-controls {
+            right: auto;
+            left: var(--page-padding);
+        }
+
+        .utility-btn {
+            width: 43px;
+            height: 43px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            background: var(--card-bg);
+            color: var(--primary);
+            cursor: pointer;
+            transition: 0.25s ease;
+        }
+
+        .utility-btn:hover {
+            background: var(--primary);
+            color: #FFFFFF;
+            transform: translateY(-2px);
+        }
+
+        .utility-btn svg {
+            width: 19px;
+            height: 19px;
+        }
+
+        .page-container {
+            width: 100%;
+            max-width: var(--container-width);
+            margin: 0 auto;
+        }
+
+        .policy-card {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            background: var(--card-bg);
+            box-shadow: 0 24px 80px rgba(34, 18, 61, 0.10);
+            animation: cardAppear 0.7s ease both;
+        }
+
+        body.dark-mode .policy-card {
+            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+        }
+
+        .policy-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--primary));
+        }
+
+        .policy-header {
+            padding: 48px 55px 36px;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .brand-logo {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 13px;
+            text-decoration: none;
+            color: var(--text-color);
+            margin-bottom: 30px;
+        }
+
+        .logo-badge {
+            width: 54px;
+            height: 54px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .brand-logo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .logo-text-group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 3px;
+        }
+
+        .logo-brand-title {
+            font-family: var(--heading-font);
+            font-size: 26px;
+            line-height: 1.1;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .brand-craft {
+            color: var(--secondary);
+        }
+
+        .logo-brand-subtitle {
+            font-size: 8px;
+            line-height: 1.5;
+            font-weight: 800;
+            letter-spacing: 1.1px;
+            color: var(--text-light);
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            color: var(--primary);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            line-height: 1.6;
+        }
+
+        .eyebrow-line {
+            width: 30px;
+            height: 2px;
+            background: var(--secondary);
+            flex-shrink: 0;
+        }
+
+        .policy-header h1 {
+            font-family: var(--heading-font);
+            color: var(--heading-color);
+            font-size: clamp(32px, 4vw, 46px);
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+
+        .policy-header h1 span {
+            color: var(--primary);
+        }
+
+        .header-description {
+            max-width: 620px;
+            margin: 0 auto;
+            color: var(--text-light);
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        .policy-meta {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 10px 22px;
+            margin-top: 22px;
+            color: var(--text-light);
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .policy-meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .policy-meta svg {
+            width: 15px;
+            height: 15px;
+            color: var(--primary);
+        }
+
+        .policy-body {
+            padding: 40px 55px 48px;
+        }
+
+        .policy-intro {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 20px;
+            margin-bottom: 35px;
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            background: var(--primary-light);
+        }
+
+        .intro-icon {
+            width: 42px;
+            height: 42px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            color: var(--primary);
+            background: var(--card-bg);
+        }
+
+        .intro-icon svg {
+            width: 21px;
+            height: 21px;
+        }
+
+        .policy-intro h2 {
+            font-family: var(--heading-font);
+            font-size: 19px;
+            color: var(--heading-color);
+            margin-bottom: 6px;
+        }
+
+        .policy-intro p {
+            color: var(--text-light);
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .policy-section {
+            padding: 0 0 27px;
+            margin-bottom: 27px;
+            border-bottom: 1px solid var(--border-color);
+            scroll-margin-top: 25px;
+        }
+
+        .policy-section:last-of-type {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 13px;
+        }
+
+        .section-number {
+            width: 39px;
+            height: 39px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border-color);
+            border-radius: 11px;
+            background: var(--primary-light);
+            color: var(--primary);
+            font-family: var(--heading-font);
+            font-size: 15px;
+            font-weight: 800;
+        }
+
+        .section-heading h2 {
+            padding-top: 5px;
+            font-family: var(--heading-font);
+            font-size: 21px;
+            line-height: 1.4;
+            color: var(--heading-color);
+        }
+
+        .section-content {
+            padding-inline-start: 54px;
+        }
+
+        .section-content p {
+            margin-bottom: 12px;
+            color: var(--text-light);
+            font-size: 13px;
+            line-height: 1.95;
+        }
+
+        .section-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-content ul {
+            padding-inline-start: 20px;
+            margin: 8px 0 13px;
+            color: var(--text-light);
+        }
+
+        .section-content li {
+            padding-inline-start: 5px;
+            margin-bottom: 9px;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .section-content li::marker {
+            color: var(--secondary);
+        }
+
+        .inline-link {
+            color: var(--primary);
+            font-weight: 800;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            overflow-wrap: anywhere;
+        }
+
+        .contact-box {
+            padding: 23px;
+            margin-top: 18px;
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            background: var(--primary-light);
+        }
+
+        .contact-box h3 {
+            font-family: var(--heading-font);
+            color: var(--heading-color);
+            font-size: 20px;
+            margin-bottom: 9px;
+        }
+
+        .contact-box p {
+            margin-bottom: 7px;
+        }
+
+        .policy-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 18px;
+            padding: 23px 55px;
+            border-top: 1px solid var(--border-color);
+            background: var(--primary-light);
+        }
+
+        .footer-copy {
+            color: var(--text-light);
+            font-size: 11px;
+            line-height: 1.8;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-links a {
+            color: var(--primary);
+            font-size: 11px;
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+
+        html[dir="rtl"] .section-content ul {
+            padding-inline-start: 20px;
+        }
+
+        @keyframes glowFloat {
+            from { transform: translate(0, 0) scale(1); }
+            to { transform: translate(25px, 30px) scale(1.12); }
+        }
+
+        @keyframes spotlightMove {
+            from { opacity: 0.06; }
+            to { opacity: 0.17; }
+        }
+
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0) rotate(0); }
+            50% { transform: translateY(-18px) rotate(8deg); }
+        }
+
+        @keyframes cardAppear {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 1024px) {
+            :root {
+                --container-width: 850px;
+            }
+
+            .policy-header {
+                padding: 42px 38px 32px;
+            }
+
+            .policy-body {
+                padding: 35px 38px 40px;
+            }
+
+            .policy-footer {
+                padding: 22px 38px;
+            }
+
+            .spotlight {
+                width: 220px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 80px 18px 30px;
+            }
+
+            .utility-controls {
+                top: 18px;
+                right: 18px;
+            }
+
+            html[dir="rtl"] .utility-controls {
+                left: 18px;
+                right: auto;
+            }
+
+            .policy-card {
+                border-radius: 19px;
+            }
+
+            .policy-header {
+                padding: 35px 25px 28px;
+            }
+
+            .brand-logo {
+                margin-bottom: 24px;
+            }
+
+            .logo-badge {
+                width: 47px;
+                height: 47px;
+            }
+
+            .logo-brand-title {
+                font-size: 23px;
+            }
+
+            .logo-brand-subtitle {
+                font-size: 7px;
+            }
+
+            .policy-header h1 {
+                font-size: 34px;
+            }
+
+            .header-description {
+                font-size: 13px;
+            }
+
+            .policy-body {
+                padding: 28px 25px 32px;
+            }
+
+            .policy-intro {
+                padding: 16px;
+                margin-bottom: 28px;
+            }
+
+            .section-heading {
+                gap: 12px;
+            }
+
+            .section-heading h2 {
+                font-size: 19px;
+            }
+
+            .section-content {
+                padding-inline-start: 0;
+            }
+
+            .policy-section {
+                padding-bottom: 23px;
+                margin-bottom: 23px;
+            }
+
+            .policy-footer {
+                padding: 21px 25px;
+            }
+
+            .floating-icon {
+                opacity: 0.15;
+            }
+        }
+
+        @media (max-width: 360px) {
+            :root {
+                --page-padding: 14px;
+            }
+
+            body {
+                padding: 75px 14px 22px;
+            }
+
+            .utility-controls {
+                top: 15px;
+                right: 14px;
+                gap: 7px;
+            }
+
+            html[dir="rtl"] .utility-controls {
+                left: 14px;
+                right: auto;
+            }
+
+            .utility-btn {
+                width: 39px;
+                height: 39px;
+                border-radius: 10px;
+            }
+
+            .policy-header {
+                padding: 30px 17px 24px;
+            }
+
+            .brand-logo {
+                gap: 9px;
+            }
+
+            .logo-badge {
+                width: 39px;
+                height: 39px;
+            }
+
+            .logo-brand-title {
+                font-size: 20px;
+            }
+
+            .logo-brand-subtitle {
+                font-size: 6px;
+                letter-spacing: 0.7px;
+            }
+
+            .eyebrow {
+                gap: 7px;
+                font-size: 9px;
+                letter-spacing: 1.4px;
+            }
+
+            .eyebrow-line {
+                width: 20px;
+            }
+
+            .policy-header h1 {
+                font-size: 29px;
+            }
+
+            .header-description {
+                font-size: 12px;
+            }
+
+            .policy-meta {
+                gap: 10px;
+                font-size: 10px;
+            }
+
+            .policy-body {
+                padding: 23px 17px 27px;
+            }
+
+            .policy-intro {
+                gap: 11px;
+                padding: 13px;
+            }
+
+            .intro-icon {
+                width: 35px;
+                height: 35px;
+            }
+
+            .policy-intro h2 {
+                font-size: 17px;
+            }
+
+            .policy-intro p,
+            .section-content p,
+            .section-content li {
+                font-size: 12px;
+            }
+
+            .section-heading {
+                gap: 10px;
+            }
+
+            .section-number {
+                width: 33px;
+                height: 33px;
+                border-radius: 9px;
+                font-size: 13px;
+            }
+
+            .section-heading h2 {
+                padding-top: 2px;
+                font-size: 17px;
+            }
+
+            .policy-footer {
+                padding: 19px 17px;
+            }
+
+            .footer-links {
+                gap: 12px;
+            }
+
+            .spotlight {
+                width: 130px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="stage-decoration" aria-hidden="true">
+        <div class="spotlight spotlight-left"></div>
+        <div class="spotlight spotlight-right"></div>
+        <i class="floating-icon one" data-lucide="drama"></i>
+        <i class="floating-icon two" data-lucide="sparkles"></i>
+        <i class="floating-icon three" data-lucide="star"></i>
+        <i class="floating-icon four" data-lucide="theater"></i>
+    </div>
+
+    <div class="utility-controls">
+        <button class="utility-btn" id="directionToggle" type="button" aria-label="Toggle RTL and LTR" title="Toggle RTL / LTR">
+            <i data-lucide="arrow-left-right"></i>
+        </button>
+        <button class="utility-btn" id="themeToggle" type="button" aria-label="Toggle light and dark mode" title="Toggle Light / Dark Mode">
+            <i data-lucide="moon"></i>
+        </button>
+    </div>
+
+    <main class="page-container">
+        <article class="policy-card">
+            <header class="policy-header">
+                <a href="index.html" class="brand-logo" aria-label="StageSprouts Home">
+                    <div class="logo-badge">
+                        <img src="logo.png" alt="StageSprouts Theater Logo" class="brand-logo-img">
+                    </div>
+                    <div class="logo-text-group">
+                        <span class="logo-brand-title">Stage<span class="brand-craft">Sprouts</span></span>
+                        <span class="logo-brand-subtitle">KIDS THEATER &amp; DRAMA WORKSHOP</span>
+                    </div>
+                </a>
+
+                
+
+                <h1>Privacy <span>Policy</span></h1>
+                <p class="header-description">
+                    We value the trust families place in StageSprouts. This policy explains how we may collect, use, protect, and manage information when you interact with our theater workshops and website.
+                </p>
+
+                <div class="policy-meta">
+                    <span><i data-lucide="shield-check"></i> Privacy &amp; Data Protection</span>
+                    <span><i data-lucide="calendar-days"></i> Last updated: October 2026</span>
+                </div>
+            </header>
+
+            <div class="policy-body">
+                <div class="policy-intro">
+                    <div class="intro-icon">
+                        <i data-lucide="heart-handshake"></i>
+                    </div>
+                    <div>
+                        <h2>Our Commitment to Families</h2>
+                        <p>
+                            StageSprouts is committed to handling personal information responsibly, especially information relating to children. We aim to collect only what is reasonably needed to deliver our programs, communicate with parents or guardians, and provide a safe workshop experience.
+                        </p>
+                    </div>
+                </div>
+
+                <section class="policy-section" id="information">
+                    <div class="section-heading">
+                        <span class="section-number">01</span>
+                        <h2>Information We Collect</h2>
+                    </div>
+                    <div class="section-content">
+                        <p>Depending on how you use our website and services, we may collect the following types of information:</p>
+                        <ul>
+                            <li><strong>Parent or guardian details:</strong> name, email address, phone number, and contact preferences.</li>
+                            <li><strong>Workshop registration details:</strong> a child's name, age group, selected program, session preferences, and relevant participation information provided by a parent or guardian.</li>
+                            <li><strong>Communications:</strong> messages, inquiries, feedback, and information you send to us.</li>
+                            <li><strong>Technical information:</strong> browser type, device information, approximate usage data, and basic website activity where applicable.</li>
+                            <li><strong>Payment-related information:</strong> transaction status or necessary billing records. Payment card or banking details should be handled by the applicable payment provider where one is used.</li>
+                        </ul>
+                        <p>Please provide only information that is necessary for registration, communication, or participation.</p>
+                    </div>
+                </section>
+
+                <section class="policy-section" id="children">
+                    <div class="section-heading">
+                        <span class="section-number">02</span>
+                        <h2>Children's Privacy</h2>
+                    </div>
+                    <div class="section-content">
+                        <p>Our programs are designed for children and young people. We treat information about children with particular care and expect registrations to be completed by a parent or legal guardian where appropriate.</p>
+                        <ul>
+                            <li>We ask parents or guardians to provide registration details for participating children.</li>
+                            <li>We use children's information for workshop administration, attendance, scheduling, and participant safety.</li>
+                            <li>We do not knowingly ask children to provide unnecessary personal information directly through our website.</li>
+                            <li>Parents or guardians may contact us to ask about, correct, or request deletion of a child's information, subject to applicable legal and recordkeeping requirements.</li>
+                        </ul>
+                        <p>Where consent is legally required for collecting or using a child's information, we will seek the appropriate consent before carrying out that activity.</p>
+                    </div>
+                </section>
+
+                <section class="policy-section" id="usage">
+                    <div class="section-heading">
+                        <span class="section-number">03</span>
+                        <h2>How We Use Information</h2>
+                    </div>
+                    <div class="section-content">
+                        <p>We may use information for legitimate workshop and website purposes, including:</p>
+                        <ul>
+                            <li>Processing inquiries and workshop registrations.</li>
+                            <li>Sharing schedules, rehearsal updates, venue information, and important announcements.</li>
+                            <li>Managing attendance, class allocation, and parent or guardian communications.</li>
+                            <li>Responding to questions, feedback, and support requests.</li>
+                            <li>Maintaining website security, improving our services, and meeting applicable legal obligations.</li>
+                            <li>Sending promotional updates only where appropriate and where required consent has been obtained.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="policy-section" id="photos">
+                    <div class="section-heading">
+                        <span class="section-number">04</span>
+                        <h2>Photos, Videos &amp; Performances</h2>
+                    </div>
+                    <div class="section-content">
+                        <p>Workshops, rehearsals, and performances may involve photography or video recording. Images or recordings that identify a child may constitute personal information.</p>
+                        <ul>
+                            <li>We will explain the intended use of identifiable photos or videos and obtain appropriate parent or guardian consent where required.</li>
+                            <li>Consent for promotional use should be handled separately from basic workshop registration wherever appropriate.</li>
+                            <li>We will not treat participation in a workshop as automatic permission to publish a child's identifiable image for marketing.</li>
+                            <li>Parents or guardians can contact us to ask about an image or video and discuss a request to remove it from channels we control, subject to legal or practical limitations.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="policy-section" id="sharing">
+                    <div class="section-heading">
+                        <span class="section-number">05</span>
+                        <h2>When We Share Information</h2>
+                    </div>
+                    <div class="section-content">
+                        <p>We do not intend to sell personal information. We may share limited information when reasonably necessary with:</p>
+                        <ul>
+                            <li>Service providers that support our website, registration systems, communications, or payment processing.</li>
+                            <li>Workshop staff who need relevant information to administer sessions and support participant safety.</li>
+                            <li>Authorities or other parties when disclosure is required by law or necessary to protect rights and safety.</li>
+                        </ul>
+                        <p>Where appropriate, we expect service providers to handle information securely and only for the purposes for which it was shared.</p>
+                    </div>
+                </section>
+
+                <section class="policy-section" id="security">
+                    <div class="section-heading">
+                        <span class="section-number">06</span>
+                        <h2>Data Security &amp; Retention</h2>
+                    </div>
+                    <div class="section-content">
+                        <p>We aim to use reasonable administrative and technical safeguards to protect information against unauthorized access, loss, misuse, or disclosure. However, no website or electronic transmission can be guaranteed to be completely secure.</p>
+                        <p>We retain personal information only for as long as reasonably necessary for the purposes described in this policy, including workshop administration, resolving disputes, maintaining records, and complying with applicable legal requirements.</p>
+                    </div>
+                </section>
+
+                <section class="policy-section" id="cookies">
+                    <div class="section-heading">
+                        <span class="section-number">07</span>
+                        <h2>Cookies &amp; Website Technologies</h2>
+                    </div>
+                    <div class="section-content">
+                        <p>Our website may use cookies or similar technologies to support essential functionality, remember preferences, understand website usage, or improve performance.</p>
+                        <p>You can manage cookies through your browser settings. Disabling certain cookies may affect how parts of the website function. If analytics or advertising technologies are added, this policy should be updated to describe them accurately and explain any choices available to visitors.</p>
+                    </div>
+                </section>
+
+                <section class="policy-section" id="rights">
+                    <div class="section-heading">
+                        <span class="section-number">08</span>
+                        <h2>Your Privacy Choices</h2>
+                    </div>
+                    <div class="section-content">
+                        <p>Subject to applicable law, parents, guardians, and other visitors may contact us to:</p>
+                        <ul>
+                            <li>Ask what personal information we hold about them or their child.</li>
+                            <li>Request correction of inaccurate or incomplete information.</li>
+                            <li>Request deletion of information where retention is not legally or operationally required.</li>
+                            <li>Withdraw consent for activities that rely on consent, such as optional promotional communications or photo use.</li>
+                            <li>Ask questions or raise concerns about how personal information is handled.</li>
+                        </ul>
+                        <p>We may need to verify the identity and authority of a person making a request before acting on it.</p>
+                    </div>
+                </section>
+
+                <section class="policy-section" id="third-party">
+                    <div class="section-heading">
+                        <span class="section-number">09</span>
+                        <h2>Third-Party Websites &amp; Services</h2>
+                    </div>
+                    <div class="section-content">
+                        <p>Our website may link to third-party websites or services. Those services may have their own privacy policies and practices. StageSprouts is not responsible for the privacy or security practices of independent third parties, so we encourage you to review their policies before providing information.</p>
+                    </div>
+                </section>
+
+                <section class="policy-section" id="updates">
+                    <div class="section-heading">
+                        <span class="section-number">10</span>
+                        <h2>Changes to This Policy</h2>
+                    </div>
+                    <div class="section-content">
+                        <p>We may update this Privacy Policy as our programs, website features, or legal requirements change. When updates are made, we will revise the date at the top of this page. Where required, we will provide additional notice or seek renewed consent.</p>
+                    </div>
+                </section>
+
+                <section class="policy-section" id="contact">
+                    <div class="section-heading">
+                        <span class="section-number">11</span>
+                        <h2>Contact Us About Privacy</h2>
+                    </div>
+                    <div class="section-content">
+                        <p>If you have a privacy question, want to make a request regarding personal information, or have a concern about a child's information, contact the StageSprouts team using your official contact details.</p>
+
+                        <div class="contact-box">
+                            <h3>We're Here to Help</h3>
+                            <p><strong>Organization:</strong> StageSprouts — Kids Theater &amp; Drama Workshop</p>
+                            <p><strong>Email:</strong> <a class="inline-link" href="mailto:privacy@stagesprouts.example">Replace with your official privacy email</a></p>
+                            <p><strong>Address:</strong> Add your official business or workshop address, if applicable.</p>
+                            <p>Please replace the example email and address with verified contact details before publishing this page.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <footer class="policy-footer">
+                <p class="footer-copy">
+                    © <span id="currentYear"></span> StageSprouts.<br>
+                    Every child deserves a stage to shine.
+                </p>
+                <nav class="footer-links" aria-label="Legal links">
+                    <a href="index.html">Home</a>
+                    <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+            </footer>
+        </article>
+    </main>
+
+    <script>
+        const body = document.body;
+        const html = document.documentElement;
+        const themeToggle = document.getElementById("themeToggle");
+        const directionToggle = document.getElementById("directionToggle");
+
+        function updateIcons() {
+            if (window.lucide) {
+                window.lucide.createIcons();
+            }
+        }
+
+        function setTheme(theme) {
+            body.classList.toggle("dark-mode", theme === "dark");
+            html.dataset.theme = theme;
+            themeToggle.innerHTML = theme === "dark"
+                ? '<i data-lucide="sun"></i>'
+                : '<i data-lucide="moon"></i>';
+            themeToggle.setAttribute(
+                "aria-label",
+                theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
+            );
+            themeToggle.title = theme === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode";
+            localStorage.setItem("stagesprouts-theme", theme);
+            updateIcons();
+        }
+
+        function setDirection(direction) {
+            html.dir = direction;
+            html.lang = "en";
+            directionToggle.setAttribute(
+                "aria-label",
+                direction === "rtl" ? "Switch to left-to-right layout" : "Switch to right-to-left layout"
+            );
+            directionToggle.title = direction === "rtl" ? "Switch to LTR" : "Switch to RTL";
+            localStorage.setItem("stagesprouts-direction", direction);
+        }
+
+        themeToggle.addEventListener("click", () => {
+            const nextTheme = body.classList.contains("dark-mode") ? "light" : "dark";
+            setTheme(nextTheme);
+        });
+
+        directionToggle.addEventListener("click", () => {
+            const nextDirection = html.dir === "rtl" ? "ltr" : "rtl";
+            setDirection(nextDirection);
+        });
+
+        setTheme(localStorage.getItem("stagesprouts-theme") || "light");
+        setDirection(localStorage.getItem("stagesprouts-direction") || "ltr");
+        document.getElementById("currentYear").textContent = new Date().getFullYear();
+        updateIcons();
+    </script>
+</body>
+</html>

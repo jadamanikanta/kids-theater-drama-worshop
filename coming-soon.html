@@ -1,0 +1,1089 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#5B21B6">
+    <title>Coming Soon | StageSprouts</title>
+   <link rel="icon" type="image/png" href="logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            --primary: #5B21B6;
+            --secondary: #F5B82E;
+            --bg-color: #FFFFFF;
+            --text-color: #171329;
+            --card-bg: #FFFFFF;
+            --border-color: rgba(91,33,182,.16);
+            --primary-light: rgba(91,33,182,.09);
+            --secondary-light: rgba(245,184,46,.15);
+            --heading-color: #281052;
+            --text-light: #625B72;
+            --font-heading: "Playfair Display",serif;
+            --font-body: "Manrope",sans-serif;
+            --primary-dark: #43158A;
+            --secondary-dark: #D99A12;
+            --transition-fast: all .22s cubic-bezier(.16,1,.3,1);
+        }
+
+        body.dark-mode {
+            --primary: #A855F7;
+            --secondary: #F5B82E;
+            --bg-color: #080808;
+            --text-color: #FFFFFF;
+            --card-bg: #141414;
+            --border-color: rgba(245,184,46,.22);
+            --primary-light: rgba(168,85,247,.16);
+            --secondary-light: rgba(245,184,46,.14);
+            --heading-color: #FFFFFF;
+            --text-light: #C8C1D5;
+            --primary-dark: #9333EA;
+            --secondary-dark: #FFD166;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            height: 100vh;
+            height: 100dvh;
+            overflow: hidden;
+            position: relative;
+            color: var(--text-color);
+            background: var(--bg-color);
+            font-family: var(--font-body);
+            transition: background .3s ease,color .3s ease;
+        }
+
+        button, a {
+            font: inherit;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button:focus-visible, a:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 3px;
+        }
+
+        .theater-background {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse at 12% 18%,var(--primary-light),transparent 36%),
+                radial-gradient(ellipse at 88% 82%,var(--secondary-light),transparent 35%),
+                var(--bg-color);
+        }
+
+        .ambient-glow {
+            position: absolute;
+            width: 330px;
+            height: 330px;
+            border-radius: 50%;
+            filter: blur(75px);
+            opacity: .6;
+            animation: glow-drift 12s ease-in-out infinite alternate;
+        }
+
+        .glow-one {
+            top: -150px;
+            left: -100px;
+            background: var(--primary-light);
+        }
+
+        .glow-two {
+            right: -130px;
+            bottom: -150px;
+            background: var(--secondary-light);
+            animation-delay: -4s;
+        }
+
+        .stage-light {
+            position: absolute;
+            top: -20%;
+            width: 34%;
+            height: 85%;
+            opacity: .2;
+            filter: blur(24px);
+            transform-origin: top center;
+            animation: spotlight 8s ease-in-out infinite alternate;
+        }
+
+        .stage-light-left {
+            left: 8%;
+            background: linear-gradient(180deg,var(--primary-light),transparent);
+            transform: rotate(22deg);
+        }
+
+        .stage-light-right {
+            right: 8%;
+            background: linear-gradient(180deg,var(--secondary-light),transparent);
+            transform: rotate(-22deg);
+            animation-delay: -4s;
+        }
+
+        .stage-curtain {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 8%;
+            opacity: .12;
+            background: repeating-linear-gradient(
+                90deg,
+                var(--primary) 0,
+                var(--primary) 12px,
+                transparent 12px,
+                transparent 27px
+            );
+            mask-image: linear-gradient(180deg,#000,transparent 92%);
+        }
+
+        .curtain-left { left: 0; }
+        .curtain-right { right: 0; }
+
+        .theater-orbit {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border: 1px dashed var(--border-color);
+            border-radius: 50%;
+            transform: translate(-50%,-50%);
+            animation: orbit-pulse 9s ease-in-out infinite;
+        }
+
+        .orbit-one {
+            width: min(680px,80vw);
+            aspect-ratio: 1;
+        }
+
+        .orbit-two {
+            width: min(500px,65vw);
+            aspect-ratio: 1;
+            animation-delay: -4s;
+        }
+
+        .floating-icon {
+            position: absolute;
+            display: grid;
+            place-items: center;
+            width: 60px;
+            height: 60px;
+            border: 1px solid var(--border-color);
+            border-radius: 19px;
+            color: var(--primary);
+            background: var(--card-bg);
+            box-shadow: 0 14px 40px rgba(35,16,70,.07);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-icon svg {
+            width: 26px;
+            height: 26px;
+            stroke-width: 1.6;
+        }
+
+        .mask-one { top: 25%; left: 12%; transform: rotate(-10deg); }
+        .mask-two { top: 62%; left: 15%; color: var(--secondary-dark); animation-delay: -2s; }
+        .mask-three { right: 12%; bottom: 20%; color: var(--secondary-dark); animation-delay: -3s; }
+
+        .floating-star {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            color: var(--secondary);
+            animation: star-float 5s ease-in-out infinite;
+        }
+
+        .star-one { top: 18%; right: 28%; }
+        .star-two { top: 39%; right: 13%; animation-delay: -2s; }
+        .star-three { bottom: 18%; left: 27%; animation-delay: -3s; }
+        .star-four { top: 71%; right: 29%; animation-delay: -1s; }
+
+        .stage-floor {
+            position: absolute;
+            right: 0;
+            bottom: -100px;
+            left: 0;
+            height: 200px;
+            background: radial-gradient(ellipse,var(--primary-light),transparent 70%);
+        }
+
+        .utility-controls {
+            position: absolute;
+            top: 20px;
+            right: 24px;
+            z-index: 5;
+            display: flex;
+            gap: 10px;
+        }
+
+        html[dir="rtl"] .utility-controls {
+            right: auto;
+            left: 24px;
+        }
+
+        .header-icon-btn {
+            display: grid;
+            place-items: center;
+            width: 44px;
+            height: 44px;
+            border: 1px solid var(--border-color);
+            border-radius: 13px;
+            color: var(--text-color);
+            background: var(--card-bg);
+            box-shadow: 0 5px 20px rgba(35,16,70,.05);
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .header-icon-btn:hover {
+            color: var(--primary);
+            border-color: var(--primary);
+            background: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        .header-icon-btn svg {
+            width: 19px;
+            height: 19px;
+        }
+
+        .coming-page {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            padding: 78px 24px 24px;
+        }
+
+        .coming-card {
+            position: relative;
+            width: min(100%,560px);
+            padding: 28px 36px 23px;
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            background: var(--card-bg);
+            box-shadow: 0 25px 80px rgba(35,16,70,.10);
+            text-align: center;
+            animation: card-enter .7s cubic-bezier(.16,1,.3,1) both;
+        }
+
+        .coming-card::before {
+            position: absolute;
+            top: 0;
+            right: 22%;
+            left: 22%;
+            height: 3px;
+            border-radius: 0 0 10px 10px;
+            background: linear-gradient(90deg,var(--primary),var(--secondary),var(--primary));
+            background-size: 200% 100%;
+            content: "";
+            animation: shimmer 5s linear infinite;
+        }
+
+        .meatcraft-logo {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 300px;
+            height: 62px;
+            max-width: 100%;
+            margin: 0 auto 16px;
+            text-align: left;
+        }
+
+        .logo-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            width: 50px;
+            height: 50px;
+        }
+
+        .brand-logo-img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .logo-text-group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 4px;
+            min-width: 0;
+        }
+
+        .logo-brand-title {
+            color: var(--primary);
+            font-family: var(--font-heading);
+            font-size: 25px;
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -.7px;
+            white-space: nowrap;
+        }
+
+        .brand-craft {
+            color: var(--secondary);
+        }
+
+        .logo-brand-subtitle {
+            display: block;
+            color: var(--text-light);
+            font-family: var(--font-body);
+            font-size: 8px;
+            font-weight: 800;
+            line-height: 1.5;
+            letter-spacing: .4px;
+            white-space: nowrap;
+        }
+
+        .coming-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 8px;
+            color: var(--primary);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+        }
+
+        .coming-eyebrow svg {
+            width: 17px;
+            height: 17px;
+            color: var(--secondary-dark);
+        }
+
+        .coming-heading {
+            margin-bottom: 10px;
+            color: var(--heading-color);
+            font-family: var(--font-heading);
+            font-size: clamp(32px,4.5vw,44px);
+            font-weight: 800;
+            line-height: 1.12;
+            letter-spacing: -1.2px;
+        }
+
+        .coming-heading span {
+            color: var(--primary);
+        }
+
+        .coming-description {
+            max-width: 400px;
+            margin: 0 auto 20px;
+            color: var(--text-light);
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .countdown-label {
+            margin-bottom: 12px;
+            color: var(--text-color);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+        }
+
+        .countdown {
+            display: grid;
+            grid-template-columns: repeat(4,minmax(0,1fr));
+            gap: 12px;
+            margin-bottom: 19px;
+        }
+
+        .countdown-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-width: 0;
+            padding: 14px 6px 11px;
+            border: 1px solid var(--border-color);
+            border-radius: 13px;
+            background: var(--primary-light);
+        }
+
+        .countdown-number {
+            color: var(--primary);
+            font-family: var(--font-heading);
+            font-size: clamp(28px,4vw,38px);
+            font-weight: 800;
+            line-height: 1.1;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .countdown-unit {
+            margin-top: 6px;
+            color: var(--text-light);
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .launch-note {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 18px;
+            color: var(--text-light);
+            font-size: 11px;
+        }
+
+        .launch-note svg {
+            width: 15px;
+            height: 15px;
+            color: var(--secondary-dark);
+        }
+
+        .coming-actions {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .coming-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-height: 43px;
+            padding: 10px 20px;
+            border: 1px solid var(--primary);
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .coming-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .coming-btn-primary {
+            color: #FFFFFF;
+            background: var(--primary);
+        }
+
+        .coming-btn-primary:hover {
+            border-color: var(--secondary);
+            color: #171329;
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .coming-btn-outline {
+            border-color: var(--border-color);
+            color: var(--text-color);
+            background: transparent;
+        }
+
+        .coming-btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        .coming-footer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 19px;
+            padding-top: 13px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-light);
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        .footer-star {
+            color: var(--secondary-dark);
+            font-size: 13px;
+        }
+
+        html[dir="rtl"] .meatcraft-logo {
+            direction: rtl;
+        }
+
+        html[dir="rtl"] .coming-btn svg {
+            transform: scaleX(-1);
+        }
+
+        @keyframes card-enter {
+            from { opacity: 0; transform: translateY(18px) scale(.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes glow-drift {
+            from { transform: translate(0,0) scale(1); }
+            to { transform: translate(30px,24px) scale(1.15); }
+        }
+
+        @keyframes spotlight {
+            from { opacity: .12; }
+            to { opacity: .32; }
+        }
+
+        @keyframes float {
+            0%,100% { translate: 0 0; }
+            50% { translate: 0 -13px; }
+        }
+
+        @keyframes star-float {
+            0%,100% { translate: 0 0; rotate: 0deg; opacity: .65; }
+            50% { translate: 0 -10px; rotate: 18deg; opacity: 1; }
+        }
+
+        @keyframes orbit-pulse {
+            0%,100% { opacity: .25; scale: .98; }
+            50% { opacity: .7; scale: 1.03; }
+        }
+
+        @keyframes shimmer {
+            to { background-position: 200% 0; }
+        }
+
+        @media (max-width: 1024px) {
+            .coming-card {
+                width: min(100%,530px);
+                padding: 25px 30px 21px;
+            }
+
+            .mask-one { left: 6%; }
+            .mask-two { left: 7%; }
+            .mask-three { right: 6%; }
+        }
+
+        @media (max-width: 768px) {
+            .coming-page {
+                padding: 70px 18px 18px;
+            }
+
+            .utility-controls {
+                top: 14px;
+                right: 16px;
+                gap: 8px;
+            }
+
+            html[dir="rtl"] .utility-controls {
+                right: auto;
+                left: 16px;
+            }
+
+            .header-icon-btn {
+                width: 40px;
+                height: 40px;
+                border-radius: 11px;
+            }
+
+            .coming-card {
+                width: min(100%,470px);
+                padding: 23px 22px 19px;
+                border-radius: 21px;
+            }
+
+            .meatcraft-logo {
+                width: 245px;
+                height: 54px;
+                gap: 8px;
+                margin-bottom: 12px;
+            }
+
+            .logo-badge {
+                width: 45px;
+                height: 45px;
+            }
+
+            .logo-brand-title {
+                font-size: 22px;
+            }
+
+            .logo-brand-subtitle {
+                font-size: 7px;
+                letter-spacing: .2px;
+            }
+
+            .coming-heading {
+                font-size: clamp(30px,6vw,38px);
+            }
+
+            .countdown {
+                gap: 8px;
+            }
+
+            .countdown-box {
+                padding: 12px 4px 10px;
+            }
+
+            .countdown-number {
+                font-size: 31px;
+            }
+
+            .floating-icon {
+                width: 46px;
+                height: 46px;
+                border-radius: 14px;
+                opacity: .65;
+            }
+
+            .floating-icon svg {
+                width: 22px;
+                height: 22px;
+            }
+
+            .mask-one { top: 17%; left: 3%; }
+            .mask-two { top: 65%; left: 4%; }
+            .mask-three { right: 3%; bottom: 17%; }
+        }
+
+        @media (max-width: 360px) {
+            .coming-page {
+                padding: 58px 10px 10px;
+            }
+
+            .utility-controls {
+                top: 9px;
+                right: 10px;
+                gap: 6px;
+            }
+
+            html[dir="rtl"] .utility-controls {
+                right: auto;
+                left: 10px;
+            }
+
+            .header-icon-btn {
+                width: 34px;
+                height: 34px;
+                border-radius: 9px;
+            }
+
+            .coming-card {
+                padding: 17px 13px 14px;
+                border-radius: 17px;
+            }
+
+            .meatcraft-logo {
+                width: 215px;
+                height: 46px;
+                gap: 7px;
+                margin-bottom: 10px;
+            }
+
+            .logo-badge {
+                width: 38px;
+                height: 38px;
+            }
+
+            .logo-brand-title {
+                font-size: 19px;
+            }
+
+            .logo-brand-subtitle {
+                font-size: 6px;
+                letter-spacing: 0;
+            }
+
+            .coming-eyebrow {
+                margin-bottom: 6px;
+                font-size: 9px;
+                letter-spacing: 1.2px;
+            }
+
+            .coming-heading {
+                margin-bottom: 7px;
+                font-size: 29px;
+            }
+
+            .coming-description {
+                margin-bottom: 13px;
+                font-size: 11px;
+                line-height: 1.6;
+            }
+
+            .countdown-label {
+                margin-bottom: 8px;
+                font-size: 9px;
+            }
+
+            .countdown {
+                gap: 6px;
+                margin-bottom: 13px;
+            }
+
+            .countdown-box {
+                padding: 10px 2px 8px;
+                border-radius: 9px;
+            }
+
+            .countdown-number {
+                font-size: 25px;
+            }
+
+            .countdown-unit {
+                margin-top: 4px;
+                font-size: 8px;
+                letter-spacing: .5px;
+            }
+
+            .launch-note {
+                margin-bottom: 13px;
+                font-size: 9px;
+            }
+
+            .coming-actions {
+                gap: 7px;
+            }
+
+            .coming-btn {
+                min-height: 38px;
+                gap: 5px;
+                padding: 8px 10px;
+                font-size: 10px;
+            }
+
+            .coming-btn svg {
+                width: 14px;
+                height: 14px;
+            }
+
+            .coming-footer {
+                gap: 6px;
+                margin-top: 13px;
+                padding-top: 10px;
+                font-size: 8px;
+            }
+
+            .floating-icon {
+                width: 36px;
+                height: 36px;
+                border-radius: 11px;
+                opacity: .4;
+            }
+        }
+
+        @media (max-height: 680px) {
+            .coming-page {
+                padding-top: 60px;
+                padding-bottom: 10px;
+            }
+
+            .coming-card {
+                padding-top: 15px;
+                padding-bottom: 13px;
+            }
+
+            .meatcraft-logo {
+                height: 44px;
+                margin-bottom: 8px;
+            }
+
+            .logo-badge {
+                width: 39px;
+                height: 39px;
+            }
+
+            .coming-eyebrow {
+                margin-bottom: 5px;
+            }
+
+            .coming-heading {
+                margin-bottom: 6px;
+                font-size: 29px;
+            }
+
+            .coming-description {
+                margin-bottom: 12px;
+                line-height: 1.55;
+            }
+
+            .countdown {
+                margin-bottom: 12px;
+            }
+
+            .countdown-box {
+                padding-top: 9px;
+                padding-bottom: 8px;
+            }
+
+            .countdown-number {
+                font-size: 27px;
+            }
+
+            .launch-note {
+                margin-bottom: 11px;
+            }
+
+            .coming-footer {
+                margin-top: 12px;
+                padding-top: 9px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,*::before,*::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="theater-background" aria-hidden="true">
+        <div class="ambient-glow glow-one"></div>
+        <div class="ambient-glow glow-two"></div>
+        <div class="stage-light stage-light-left"></div>
+        <div class="stage-light stage-light-right"></div>
+        <div class="stage-curtain curtain-left"></div>
+        <div class="stage-curtain curtain-right"></div>
+        <div class="theater-orbit orbit-one"></div>
+        <div class="theater-orbit orbit-two"></div>
+
+        <div class="floating-icon mask-one"><i data-lucide="drama"></i></div>
+        <div class="floating-icon mask-two"><i data-lucide="clapperboard"></i></div>
+        <div class="floating-icon mask-three"><i data-lucide="sparkles"></i></div>
+
+        <i class="floating-star star-one" data-lucide="star"></i>
+        <i class="floating-star star-two" data-lucide="sparkle"></i>
+        <i class="floating-star star-three" data-lucide="star"></i>
+        <i class="floating-star star-four" data-lucide="sparkles"></i>
+        <div class="stage-floor"></div>
+    </div>
+
+    <div class="utility-controls">
+        <button class="header-icon-btn" id="directionToggle" type="button"
+            aria-label="Toggle RTL and LTR" title="Toggle RTL / LTR">
+            <i data-lucide="arrow-left-right"></i>
+        </button>
+
+        <button class="header-icon-btn" id="themeToggle" type="button"
+            aria-label="Toggle light and dark mode" title="Toggle Light / Dark Mode">
+            <i data-lucide="moon"></i>
+        </button>
+    </div>
+
+    <main class="coming-page">
+        <section class="coming-card" aria-labelledby="comingHeading">
+
+            <a href="index.html" class="meatcraft-logo" aria-label="StageSprouts Home">
+                <div class="logo-badge">
+                    <img src="logo.png" alt="StageSprouts Theater Logo" class="brand-logo-img">
+                </div>
+                <div class="logo-text-group">
+                    <span class="logo-brand-title">Stage<span class="brand-craft">Sprouts</span></span>
+                    <span class="logo-brand-subtitle">KIDS THEATER &amp; DRAMA WORKSHOP</span>
+                </div>
+            </a>
+
+            <span class="coming-eyebrow">
+                <i data-lucide="sparkles"></i>
+                <span>The Curtain Is Rising Soon</span>
+            </span>
+
+            <h1 class="coming-heading" id="comingHeading">
+                Something <span>Magical</span><br>Is Coming!
+            </h1>
+
+            <p class="coming-description">
+                A world of imagination, creativity, and little stars is almost ready.
+                Get ready for the next exciting StageSprouts adventure!
+            </p>
+
+            <p class="countdown-label">The big reveal begins in</p>
+
+            <div class="countdown" aria-label="Countdown to launch">
+                <div class="countdown-box">
+                    <span class="countdown-number" id="days">30</span>
+                    <span class="countdown-unit">Days</span>
+                </div>
+                <div class="countdown-box">
+                    <span class="countdown-number" id="hours">00</span>
+                    <span class="countdown-unit">Hours</span>
+                </div>
+                <div class="countdown-box">
+                    <span class="countdown-number" id="minutes">00</span>
+                    <span class="countdown-unit">Minutes</span>
+                </div>
+                <div class="countdown-box">
+                    <span class="countdown-number" id="seconds">00</span>
+                    <span class="countdown-unit">Seconds</span>
+                </div>
+            </div>
+
+            <p class="launch-note" id="launchNote">
+                <i data-lucide="party-popper"></i>
+                <span>Our little stars are getting ready to shine!</span>
+            </p>
+
+            <div class="coming-actions">
+                <a href="index.html" class="coming-btn coming-btn-primary">
+                    <i data-lucide="house"></i>
+                    <span>Back to Home</span>
+                </a>
+                <button class="coming-btn coming-btn-outline" id="shareButton" type="button">
+                    <i data-lucide="share-2"></i>
+                    <span>Share</span>
+                </button>
+            </div>
+
+            <div class="coming-footer">
+                <span class="footer-star">✦</span>
+                <span>Big dreams. Little stars. Brilliant performances.</span>
+                <span class="footer-star">✦</span>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const body = document.body;
+            const html = document.documentElement;
+            const themeToggle = document.getElementById("themeToggle");
+            const directionToggle = document.getElementById("directionToggle");
+            const shareButton = document.getElementById("shareButton");
+            const launchNote = document.getElementById("launchNote");
+
+            function renderIcons() {
+                if (window.lucide) window.lucide.createIcons();
+            }
+
+            function applyTheme(theme, save = true) {
+                body.classList.toggle("dark-mode", theme === "dark");
+                themeToggle.innerHTML =
+                    `<i data-lucide="${theme === "dark" ? "sun" : "moon"}"></i>`;
+                themeToggle.setAttribute(
+                    "aria-label",
+                    theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
+                );
+                themeToggle.title =
+                    theme === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode";
+
+                if (save) localStorage.setItem("stagesprouts-theme", theme);
+                renderIcons();
+            }
+
+            function applyDirection(direction, save = true) {
+                html.setAttribute("dir", direction);
+                directionToggle.setAttribute(
+                    "aria-label",
+                    `Switch to ${direction === "ltr" ? "RTL" : "LTR"} direction`
+                );
+                if (save) localStorage.setItem("stagesprouts-direction", direction);
+            }
+
+            applyTheme(localStorage.getItem("stagesprouts-theme") || "light", false);
+            applyDirection(localStorage.getItem("stagesprouts-direction") || "ltr", false);
+            renderIcons();
+
+            themeToggle.addEventListener("click", () => {
+                applyTheme(body.classList.contains("dark-mode") ? "light" : "dark");
+            });
+
+            directionToggle.addEventListener("click", () => {
+                applyDirection(html.getAttribute("dir") === "rtl" ? "ltr" : "rtl");
+            });
+
+            const countdownKey = "stagesprouts-coming-soon-deadline";
+            let deadline = Number(localStorage.getItem(countdownKey));
+
+            if (!deadline || deadline <= Date.now()) {
+                deadline = Date.now() + (30 * 24 * 60 * 60 * 1000);
+                localStorage.setItem(countdownKey, String(deadline));
+            }
+
+            const twoDigits = value => String(value).padStart(2, "0");
+
+            function updateCountdown() {
+                const remaining = Math.max(0, deadline - Date.now());
+
+                const days = Math.floor(remaining / 86400000);
+                const hours = Math.floor((remaining % 86400000) / 3600000);
+                const minutes = Math.floor((remaining % 3600000) / 60000);
+                const seconds = Math.floor((remaining % 60000) / 1000);
+
+                document.getElementById("days").textContent = twoDigits(days);
+                document.getElementById("hours").textContent = twoDigits(hours);
+                document.getElementById("minutes").textContent = twoDigits(minutes);
+                document.getElementById("seconds").textContent = twoDigits(seconds);
+
+                if (remaining <= 0) {
+                    launchNote.querySelector("span").textContent =
+                        "The big moment is here. Welcome to StageSprouts!";
+                }
+            }
+
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+
+            shareButton.addEventListener("click", async () => {
+                const shareData = {
+                    title: "StageSprouts - Coming Soon",
+                    text: "Something magical is coming to StageSprouts!",
+                    url: window.location.href
+                };
+
+                if (navigator.share) {
+                    try {
+                        await navigator.share(shareData);
+                    } catch (error) {
+                        if (error.name !== "AbortError") {
+                            launchNote.querySelector("span").textContent =
+                                "Copy this page URL to share the excitement!";
+                        }
+                    }
+                } else if (navigator.clipboard && window.isSecureContext) {
+                    try {
+                        await navigator.clipboard.writeText(window.location.href);
+                        launchNote.querySelector("span").textContent =
+                            "Page link copied. Share the excitement!";
+                    } catch {
+                        launchNote.querySelector("span").textContent =
+                            "Copy this page URL to share the excitement!";
+                    }
+                } else {
+                    launchNote.querySelector("span").textContent =
+                        "Copy this page URL to share the excitement!";
+                }
+            });
+        });
+    </script>
+</body>
+</html>
